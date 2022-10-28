@@ -22,6 +22,10 @@ public class Post
 
     public string? Content { get; set; }
 
+    public float NecessarySum { get; set; }
+
+    public float CollectedSum { get; set; }
+
     public DateTime DateCreated { get; set; }
 
     [JsonIgnore]
