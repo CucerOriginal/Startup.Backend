@@ -16,6 +16,8 @@ namespace Models.ModelsIdentity.IdentityAuth
 
         public string? Role { get; set; }
 
+        public string? Requisite { get; set; }
+
         public int PostsCount { get; set; }
     }
 }
