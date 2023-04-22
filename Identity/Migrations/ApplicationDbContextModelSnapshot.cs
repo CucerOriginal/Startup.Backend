@@ -82,6 +82,18 @@ namespace Identity.Migrations
                             Id = 7,
                             Description = "Юристы",
                             Name = "Юристы"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Description = "Искусство",
+                            Name = "Искусство"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Description = "Производство",
+                            Name = "Производство"
                         });
                 });
 
@@ -128,7 +140,7 @@ namespace Identity.Migrations
                             Id = 1,
                             CategoryId = 1,
                             Content = "Что от Вас требуется? Знание основ SQL, 1С (выбор, связи, вложенные запросы); Аналитический склад ума; Стремление к саморазвитию; Инициативность, желание искать новые инструменты и пути решения поставленных задач.",
-                            DateCreated = new DateTime(2023, 4, 22, 13, 29, 12, 533, DateTimeKind.Utc).AddTicks(4779),
+                            DateCreated = new DateTime(2023, 4, 22, 15, 55, 33, 162, DateTimeKind.Utc).AddTicks(5623),
                             Description = "Требуемый опыт работы: 1–3 года Полная занятость, полный день",
                             EmployerId = "88aec81d-b5b0-43f3-8721-8d21560b02a7",
                             Salary = 40000.0,
@@ -139,7 +151,7 @@ namespace Identity.Migrations
                             Id = 2,
                             CategoryId = 1,
                             Content = "Требования: - C# + .NET 4.7 с опытом разработки не менее 2 лет - ООП - уверенное владение. - Опыт разработки desktop приложений (Windows). - Многопоточные приложения - уверенное владение. - WPF - уверенное владение - знание MVVM, понимание принципов SOLID, DI Будет плюсом: WinForms, Unity, Prism",
-                            DateCreated = new DateTime(2023, 4, 22, 13, 29, 12, 533, DateTimeKind.Utc).AddTicks(4783),
+                            DateCreated = new DateTime(2023, 4, 22, 15, 55, 33, 162, DateTimeKind.Utc).AddTicks(5626),
                             Description = "Требуемый опыт работы: 1–3 года Полная занятость, гибкий график",
                             EmployerId = "88aec81d-b5b0-43f3-8721-8d21560b02a7",
                             Salary = 100000.0,
@@ -150,11 +162,88 @@ namespace Identity.Migrations
                             Id = 3,
                             CategoryId = 1,
                             Content = "Требования: Уверенные знания C#; Знание ASP.NET Core; Знание SQL, опыт работы с MSSQL, PostgreSQL; Entity Framework Core; Понимание ООП; Знать и применять на практике шаблоны проектирования; Опыт разработки REST API; Опыт работы с GIT.",
-                            DateCreated = new DateTime(2023, 4, 22, 13, 29, 12, 533, DateTimeKind.Utc).AddTicks(4784),
+                            DateCreated = new DateTime(2023, 4, 22, 15, 55, 33, 162, DateTimeKind.Utc).AddTicks(5627),
                             Description = "Требуемый опыт работы: 1–3 года Полная занятость, удаленная работа",
                             EmployerId = "88aec81d-b5b0-43f3-8721-8d21560b02a7",
                             Salary = 160000.0,
                             Title = "Разработчик C# (Middle)"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CategoryId = 2,
+                            Content = "Требования: Опыт вождения от 1 года; Владение управлением грузовой техники; Знание Москвы и Московской области; Наличие водительских прав категории B и C; Опыт работы в экспедиции.",
+                            DateCreated = new DateTime(2023, 4, 22, 15, 55, 33, 162, DateTimeKind.Utc).AddTicks(5629),
+                            Description = "Требуемый опыт работы: от 1 года Полная занятость, график 5/2",
+                            EmployerId = "88aec81d-b5b0-43f3-8721-8d21560b0288",
+                            Salary = 50000.0,
+                            Title = "Водитель-экспедитор"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CategoryId = 5,
+                            Content = "Требования: Опыт работы терапевтом от 3 лет; Знание современных методик диагностики и лечения заболеваний; Коммуникабельность, умение налаживать контакт с пациентами.",
+                            DateCreated = new DateTime(2023, 4, 22, 15, 55, 33, 162, DateTimeKind.Utc).AddTicks(5630),
+                            Description = "Требуемый опыт работы: от 3 лет Полная занятость, график посменный",
+                            EmployerId = "88aec81d-b5b0-43f3-8721-8d21560b02a9",
+                            Salary = 150000.0,
+                            Title = "Врач-терапевт"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            CategoryId = 7,
+                            Content = "Требования: Опыт работы юристом от 2 лет; Знание гражданского, трудового, налогового, корпоративного права; Опыт ведения переговоров; Уверенный пользователь ПК, знание офисных программ.",
+                            DateCreated = new DateTime(2023, 4, 22, 15, 55, 33, 162, DateTimeKind.Utc).AddTicks(5631),
+                            Description = "Требуемый опыт работы: от 2 лет Полная занятость, график 5/2",
+                            EmployerId = "88aec81d-b5b0-43f3-8721-8d21560b02b0",
+                            Salary = 100000.0,
+                            Title = "Юрист-консультант"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            CategoryId = 9,
+                            Content = "Требования: Опыт работы инженером-технологом от 3 лет; Знание технологий машиностроения; Навыки проектирования и внедрения технологических процессов; Знание нормативной документации по организации производства.",
+                            DateCreated = new DateTime(2023, 4, 22, 15, 55, 33, 162, DateTimeKind.Utc).AddTicks(5632),
+                            Description = "Требуемый опыт работы: от 3 лет Полная занятость, график 5/2",
+                            EmployerId = "88aec81d-b5b0-43f3-8721-8d21560b02a8",
+                            Salary = 120000.0,
+                            Title = "Инженер-технолог"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            CategoryId = 2,
+                            Content = "Требования: Категория В, С; Опыт экспедиторской работы не менее 3 лет; Знание города и области; Умение работать с документами; Ответственность, пунктуальность.",
+                            DateCreated = new DateTime(2023, 4, 22, 15, 55, 33, 162, DateTimeKind.Utc).AddTicks(5633),
+                            Description = "Требуемый опыт работы: от 3 лет, Полная занятость, гибкий график",
+                            EmployerId = "88aec81d-b5b0-43f3-8721-8d21560b0288",
+                            Salary = 50000.0,
+                            Title = "Водитель-экспедитор"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            CategoryId = 5,
+                            Content = "Требования: Высшее медицинское образование; Стаж работы от 3 лет; Владение методами диагностики и лечения заболеваний; Навыки взаимодействия с пациентами; Знание медицинской терминологии.",
+                            DateCreated = new DateTime(2023, 4, 22, 15, 55, 33, 162, DateTimeKind.Utc).AddTicks(5635),
+                            Description = "Требуемый опыт работы: от 3 лет, Полная занятость, график 5/2",
+                            EmployerId = "88aec81d-b5b0-43f3-8721-8d21560b02a9",
+                            Salary = 80000.0,
+                            Title = "Врач-терапевт"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            CategoryId = 7,
+                            Content = "Требования: Высшее юридическое образование; Опыт работы не менее 2 лет; Знание трудового законодательства, налогового права; Уверенное владение гражданским и арбитражным законодательством; Опыт ведения дел в суде; Навыки составления правовых документов.",
+                            DateCreated = new DateTime(2023, 4, 22, 15, 55, 33, 162, DateTimeKind.Utc).AddTicks(5636),
+                            Description = "Требуемый опыт работы: от 2 лет, Полная занятость, гибкий график",
+                            EmployerId = "88aec81d-b5b0-43f3-8721-8d21560b02b0",
+                            Salary = 90000.0,
+                            Title = "Юрист-консультант"
                         });
                 });
 
@@ -324,8 +413,40 @@ namespace Identity.Migrations
                             Id = 1,
                             ApplicantId = "88aec81d-b5b0-45f3-0721-1241560b01f7",
                             Content = "Норм тема",
-                            CreatedDate = new DateTime(2023, 4, 22, 13, 29, 12, 533, DateTimeKind.Utc).AddTicks(4805),
+                            CreatedDate = new DateTime(2023, 4, 22, 15, 55, 33, 162, DateTimeKind.Utc).AddTicks(5656),
                             EmployerId = "88aec81d-b5b0-43f3-8721-8d21560b02a7"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            ApplicantId = "88aec81d-b5b0-45f3-0721-1241560b01f7",
+                            Content = "Хорошее место для работы",
+                            CreatedDate = new DateTime(2023, 4, 22, 15, 55, 33, 162, DateTimeKind.Utc).AddTicks(5657),
+                            EmployerId = "88aec81d-b5b0-43f3-8721-8d21560b02a8"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            ApplicantId = "88aec81d-b5b0-45f3-0721-1241560b01f7",
+                            Content = "Отличная команда, интересные проекты",
+                            CreatedDate = new DateTime(2023, 4, 22, 15, 55, 33, 162, DateTimeKind.Utc).AddTicks(5658),
+                            EmployerId = "88aec81d-b5b0-43f3-8721-8d21560b0288"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            ApplicantId = "88aec81d-b5b0-45f3-0721-1241560b02fa",
+                            Content = "Организация современная, все на высшем уровне",
+                            CreatedDate = new DateTime(2023, 4, 22, 15, 55, 33, 162, DateTimeKind.Utc).AddTicks(5660),
+                            EmployerId = "88aec81d-b5b0-43f3-8721-8d21560b02a7"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            ApplicantId = "88aec81d-b5b0-45f3-0721-1241560b02f9",
+                            Content = "Руководство компетентное, всегда можно рассчитывать на поддержку",
+                            CreatedDate = new DateTime(2023, 4, 22, 15, 55, 33, 162, DateTimeKind.Utc).AddTicks(5661),
+                            EmployerId = "88aec81d-b5b0-43f3-8721-8d21560b0288"
                         });
                 });
 
@@ -354,6 +475,30 @@ namespace Identity.Migrations
                             Id = "188aec81d-b5b0-45f3-0721-1241560b01f7",
                             ApplicantId = "88aec81d-b5b0-45f3-0721-1241560b01f7",
                             PostId = 1
+                        },
+                        new
+                        {
+                            Id = "188aec81d-b5b0-45f3-0721-1241560b02f8",
+                            ApplicantId = "88aec81d-b5b0-45f3-0721-1241560b02f8",
+                            PostId = 1
+                        },
+                        new
+                        {
+                            Id = "288aec81d-b5b0-45f3-0721-1241560b01f7",
+                            ApplicantId = "88aec81d-b5b0-45f3-0721-1241560b01f7",
+                            PostId = 2
+                        },
+                        new
+                        {
+                            Id = "388aec81d-b5b0-45f3-0721-1241560b01f7",
+                            ApplicantId = "88aec81d-b5b0-45f3-0721-1241560b01f7",
+                            PostId = 3
+                        },
+                        new
+                        {
+                            Id = "488aec81d-b5b0-45f3-0721-1241560b02f9",
+                            ApplicantId = "88aec81d-b5b0-45f3-0721-1241560b02f9",
+                            PostId = 4
                         });
                 });
 
@@ -382,10 +527,38 @@ namespace Identity.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "188aec81d-b5b0-45f3-8721-8d41560b02f7",
+                            Id = "88aec81d-b5b0-43f3-8721-8d21560b02a788aec81d-b5b0-45f3-0721-1241560b01f7",
                             ApplicantId = "88aec81d-b5b0-45f3-0721-1241560b01f7",
                             EmployerId = "88aec81d-b5b0-43f3-8721-8d21560b02a7",
                             LikeStatus = true
+                        },
+                        new
+                        {
+                            Id = "88aec81d-b5b0-43f3-8721-8d21560b02a788aec81d-b5b0-45f3-0721-1241560b02f9",
+                            ApplicantId = "88aec81d-b5b0-45f3-0721-1241560b02f8",
+                            EmployerId = "88aec81d-b5b0-43f3-8721-8d21560b02a7",
+                            LikeStatus = false
+                        },
+                        new
+                        {
+                            Id = "88aec81d-b5b0-43f3-8721-8d21560b02a788aec81d-b5b0-45f3-0721-1241560b02f8",
+                            ApplicantId = "88aec81d-b5b0-45f3-0721-1241560b02f9",
+                            EmployerId = "88aec81d-b5b0-43f3-8721-8d21560b02a7",
+                            LikeStatus = true
+                        },
+                        new
+                        {
+                            Id = "88aec81d-b5b0-43f3-8721-8d21560b02a988aec81d-b5b0-45f3-0721-1241560b02f7",
+                            ApplicantId = "88aec81d-b5b0-45f3-0721-1241560b02f9",
+                            EmployerId = "88aec81d-b5b0-43f3-8721-8d21560b02a9",
+                            LikeStatus = true
+                        },
+                        new
+                        {
+                            Id = "88aec81d-b5b0-43f3-8721-8d21560b02b088aec81d-b5b0-45f3-0721-1241560b02f7",
+                            ApplicantId = "88aec81d-b5b0-45f3-0721-1241560b02f9",
+                            EmployerId = "88aec81d-b5b0-43f3-8721-8d21560b02b0",
+                            LikeStatus = false
                         });
                 });
 
@@ -405,6 +578,22 @@ namespace Identity.Migrations
                         new
                         {
                             Id = "88aec81d-b5b0-45f3-0721-1241560b01f7"
+                        },
+                        new
+                        {
+                            Id = "88aec81d-b5b0-45f3-0721-1241560b02f8"
+                        },
+                        new
+                        {
+                            Id = "88aec81d-b5b0-45f3-0721-1241560b02f9"
+                        },
+                        new
+                        {
+                            Id = "88aec81d-b5b0-45f3-0721-1241560b02fa"
+                        },
+                        new
+                        {
+                            Id = "88aec81d-b5b0-45f3-0721-1241560b02fb"
                         });
                 });
 
@@ -492,32 +681,160 @@ namespace Identity.Migrations
                             Id = "88aec81d-b5b0-45f3-8721-8d41560b02f7",
                             AccessFailedCount = 0,
                             ApplicantId = "88aec81d-b5b0-45f3-0721-1241560b01f7",
-                            ConcurrencyStamp = "f6d1b285-fabe-4f5d-8e1b-b0793fee780a",
-                            Email = "1@mail.ru",
+                            ConcurrencyStamp = "f5215daa-589b-415f-932f-a8851355c22a",
+                            Email = "vanya@mail.ru",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PasswordHash = "EtoHash",
                             PhoneNumberConfirmed = false,
                             Role = "Applicant",
-                            SecurityStamp = "d7c80b33-8f3f-4dd5-8cc3-1cd0ab2fbad0",
+                            SecurityStamp = "326c53fe-a49e-4712-b76c-c7cd95c85b2a",
                             TwoFactorEnabled = false,
-                            UserName = "Vanya"
+                            UserName = "Ваня"
                         },
                         new
                         {
                             Id = "88aec81d-b5b0-45f3-8721-8d41560b0111",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "d9d72123-602c-4e98-a95c-0a98c7cd4105",
-                            Email = "321@mail.ru",
+                            ConcurrencyStamp = "e7cb5ee3-5a1e-4dfd-b670-9ba46bcd9f6a",
+                            Email = "ivan@mail.ru",
                             EmailConfirmed = false,
                             EmployerId = "88aec81d-b5b0-43f3-8721-8d21560b02a7",
                             LockoutEnabled = false,
                             PasswordHash = "EtoHash",
                             PhoneNumberConfirmed = false,
                             Role = "Employer",
-                            SecurityStamp = "f089199f-92b7-4db2-91d0-4670ff382f81",
+                            SecurityStamp = "f7a8197b-6bdf-441d-9412-816b8c8cf1ca",
                             TwoFactorEnabled = false,
-                            UserName = "Ivan"
+                            UserName = "Иван"
+                        },
+                        new
+                        {
+                            Id = "88aec81d-b5b0-45f3-8721-8d41560b0222",
+                            AccessFailedCount = 0,
+                            ApplicantId = "88aec81d-b5b0-45f3-0721-1241560b02f8",
+                            ConcurrencyStamp = "582525a3-2785-4d25-8128-11b31e18c522",
+                            Email = "katya@mail.ru",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            PasswordHash = "EtoHash",
+                            PhoneNumberConfirmed = false,
+                            Role = "Applicant",
+                            SecurityStamp = "a942ebf2-8da6-4464-9de0-9195aabd26c7",
+                            TwoFactorEnabled = false,
+                            UserName = "Катя"
+                        },
+                        new
+                        {
+                            Id = "88aec81d-b5b0-45f3-8721-8d41560b0333",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "5892d094-fc8f-4893-830d-ef767db94d18",
+                            Email = "peter@mail.ru",
+                            EmailConfirmed = false,
+                            EmployerId = "88aec81d-b5b0-43f3-8721-8d21560b02a8",
+                            LockoutEnabled = false,
+                            PasswordHash = "EtoHash",
+                            PhoneNumberConfirmed = false,
+                            Role = "Employer",
+                            SecurityStamp = "4b5c5a77-a4c7-4fae-ae0c-d69ba7b4eea7",
+                            TwoFactorEnabled = false,
+                            UserName = "Петр"
+                        },
+                        new
+                        {
+                            Id = "88aec81d-b5b0-45f3-8721-8d41560b0444",
+                            AccessFailedCount = 0,
+                            ApplicantId = "88aec81d-b5b0-45f3-0721-1241560b02f9",
+                            ConcurrencyStamp = "ffe9082e-ea1f-4ef4-9bfc-41132d18cb9e",
+                            Email = "anna@mail.ru",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            PasswordHash = "EtoHash",
+                            PhoneNumberConfirmed = false,
+                            Role = "Applicant",
+                            SecurityStamp = "68da4367-f008-4c93-91e0-316ec512ffd8",
+                            TwoFactorEnabled = false,
+                            UserName = "Анна"
+                        },
+                        new
+                        {
+                            Id = "88aec81d-b5b0-45f3-8721-8d41560b0555",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "1cfcb260-a664-4e78-be88-2bceac177042",
+                            Email = "maria@mail.ru",
+                            EmailConfirmed = false,
+                            EmployerId = "88aec81d-b5b0-43f3-8721-8d21560b0288",
+                            LockoutEnabled = false,
+                            PasswordHash = "EtoHash",
+                            PhoneNumberConfirmed = false,
+                            Role = "Employer",
+                            SecurityStamp = "b3cd6bee-a352-4059-b8d2-3fb040f92384",
+                            TwoFactorEnabled = false,
+                            UserName = "Мария"
+                        },
+                        new
+                        {
+                            Id = "88aec81d-b5b0-45f3-8721-8d41560b0666",
+                            AccessFailedCount = 0,
+                            ApplicantId = "88aec81d-b5b0-45f3-0721-1241560b02fa",
+                            ConcurrencyStamp = "c655ad97-9897-4d13-a0a8-bfbba9ddfcd7",
+                            Email = "max@mail.ru",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            PasswordHash = "EtoHash",
+                            PhoneNumberConfirmed = false,
+                            Role = "Applicant",
+                            SecurityStamp = "091d4eab-199c-4a73-bb4a-f061a00cc6ea",
+                            TwoFactorEnabled = false,
+                            UserName = "Максим"
+                        },
+                        new
+                        {
+                            Id = "88aec81d-b5b0-45f3-8721-8d41560b0777",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "fafcb544-97ea-4a71-8841-592dcaf6b780",
+                            Email = "dima@mail.ru",
+                            EmailConfirmed = false,
+                            EmployerId = "88aec81d-b5b0-43f3-8721-8d21560b02a9",
+                            LockoutEnabled = false,
+                            PasswordHash = "EtoHash",
+                            PhoneNumberConfirmed = false,
+                            Role = "Employer",
+                            SecurityStamp = "10934c78-6cf7-4f67-b768-ff3a32e1aebd",
+                            TwoFactorEnabled = false,
+                            UserName = "Дмитрий"
+                        },
+                        new
+                        {
+                            Id = "88aec81d-b5b0-45f3-8721-8d41560b0888",
+                            AccessFailedCount = 0,
+                            ApplicantId = "88aec81d-b5b0-45f3-0721-1241560b02fb",
+                            ConcurrencyStamp = "fe1e4e8a-d312-42ad-9075-8299f5fc0085",
+                            Email = "olga@mail.ru",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            PasswordHash = "EtoHash",
+                            PhoneNumberConfirmed = false,
+                            Role = "Applicant",
+                            SecurityStamp = "5032af0e-ecd7-4ef5-9ba4-3745de7577dc",
+                            TwoFactorEnabled = false,
+                            UserName = "Ольга"
+                        },
+                        new
+                        {
+                            Id = "88aec81d-b5b0-45f3-8721-8d41560b0999",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "e4dd43f0-5090-44df-aef1-6d906af01eac",
+                            Email = "sergey@mail.ru",
+                            EmailConfirmed = false,
+                            EmployerId = "88aec81d-b5b0-43f3-8721-8d21560b02b0",
+                            LockoutEnabled = false,
+                            PasswordHash = "EtoHash",
+                            PhoneNumberConfirmed = false,
+                            Role = "Employer",
+                            SecurityStamp = "87d94a53-3887-43e6-b245-10a43f5cceed",
+                            TwoFactorEnabled = false,
+                            UserName = "Сергей"
                         });
                 });
 
@@ -550,8 +867,44 @@ namespace Identity.Migrations
                         {
                             Id = "88aec81d-b5b0-43f3-8721-8d21560b02a7",
                             CommentsCount = 0,
-                            CompanyName = "КГС",
-                            Description = "Интернет провайдер",
+                            CompanyName = "РазрабыМы",
+                            Description = "Разработка платформ",
+                            PostsCount = 0,
+                            RatingCount = 0
+                        },
+                        new
+                        {
+                            Id = "88aec81d-b5b0-43f3-8721-8d21560b02a8",
+                            CommentsCount = 0,
+                            CompanyName = "ООО 'Аврора'",
+                            Description = "Производство строительных материалов",
+                            PostsCount = 0,
+                            RatingCount = 0
+                        },
+                        new
+                        {
+                            Id = "88aec81d-b5b0-43f3-8721-8d21560b0288",
+                            CommentsCount = 0,
+                            CompanyName = "ТрансЛогистика",
+                            Description = "Транспортная компания",
+                            PostsCount = 0,
+                            RatingCount = 0
+                        },
+                        new
+                        {
+                            Id = "88aec81d-b5b0-43f3-8721-8d21560b02a9",
+                            CommentsCount = 0,
+                            CompanyName = "Здоровье",
+                            Description = "Медицинский центр",
+                            PostsCount = 0,
+                            RatingCount = 0
+                        },
+                        new
+                        {
+                            Id = "88aec81d-b5b0-43f3-8721-8d21560b02b0",
+                            CommentsCount = 0,
+                            CompanyName = "Юристы-Правозащитники",
+                            Description = "Юридическая компания",
                             PostsCount = 0,
                             RatingCount = 0
                         });
@@ -638,14 +991,74 @@ namespace Identity.Migrations
                             ApplicantId = "88aec81d-b5b0-45f3-0721-1241560b01f7",
                             Description = "С 2020 года самостоятельно изучаю C#",
                             Education = "Университет управления 'ТИСБИ', Казань, ИТ, Программная инженерия",
-                            Email = "1@mail.ru",
+                            Email = "dementiev12@mail.ru",
                             GenderId = "18aec81d-b5b0-45f3-1721-8d41560b02f1",
-                            Middlename = "Petrovich",
-                            Name = "Vanya",
+                            Middlename = "Петрович",
+                            Name = "Ваня",
                             PhoneNumber = "+79242453413",
                             Salary = 45000.0,
-                            Surname = "Dementiev",
+                            Surname = "Дементьев",
                             WorkExperience = "20.11.2019 - 20.09.2022 Завод имени Ленина"
+                        },
+                        new
+                        {
+                            Id = "88aec81d-b5b0-45f3-1721-8d41560b02f2",
+                            ApplicantId = "88aec81d-b5b0-45f3-0721-1241560b02f8",
+                            Description = "Опыт работы с Java, C++ и Python",
+                            Education = "Московский государственный технический университет им. Баумана, Москва, Информатика и вычислительная техника",
+                            Email = "ivan2@mail.ru",
+                            GenderId = "18aec81d-b5b0-45f3-1721-8d41560b02f1",
+                            Middlename = "Сергеевич",
+                            Name = "Иван",
+                            PhoneNumber = "+79123456789",
+                            Salary = 55000.0,
+                            Surname = "Иванов",
+                            WorkExperience = "01.02.2020 - 01.09.2022 ООО 'Рога и копыта'"
+                        },
+                        new
+                        {
+                            Id = "88aec81d-b5b0-45f3-1721-8d41560b02f3",
+                            ApplicantId = "88aec81d-b5b0-45f3-0721-1241560b02f9",
+                            Description = "Опыт работы в веб-разработке с HTML, CSS, JavaScript",
+                            Education = "Университет ИТМО, Санкт-Петербург, Информационные системы и технологии",
+                            Email = "anna3@mail.ru",
+                            GenderId = "18aec81d-b5b0-45f3-1721-8d41560b02f1",
+                            Middlename = "Ивановна",
+                            Name = "Анна",
+                            PhoneNumber = "+79090909090",
+                            Salary = 65000.0,
+                            Surname = "Петрова",
+                            WorkExperience = "15.09.2020 - 10.03.2023 ООО 'Красный Октябрь'"
+                        },
+                        new
+                        {
+                            Id = "88aec81d-b5b0-45f3-1721-8d41560b02f4",
+                            ApplicantId = "88aec81d-b5b0-45f3-0721-1241560b02fa",
+                            Description = "Опыт работы с Python и MATLAB",
+                            Education = "Московский государственный университет им. М.В. Ломоносова, Москва, Факультет прикладной математики и информатики",
+                            Email = "sergey4@mail.ru",
+                            GenderId = "18aec81d-b5b0-45f3-1721-8d41560b02f1",
+                            Middlename = "Петрович",
+                            Name = "Сергей",
+                            PhoneNumber = "+79001234567",
+                            Salary = 50000.0,
+                            Surname = "Сидоров",
+                            WorkExperience = "01.10.2019 - 01.09.2022 ООО 'Рога и копыта'"
+                        },
+                        new
+                        {
+                            Id = "88aec81d-b5b0-45f3-1721-8d41560b02f5",
+                            ApplicantId = "88aec81d-b5b0-45f3-0721-1241560b02fb",
+                            Description = "Опыт работы в разработке мобильных приложений на Java и Kotlin",
+                            Education = "Университет ИТМО, Санкт-Петербург, Информатика и вычислительная техника",
+                            Email = "marya5@mail.ru",
+                            GenderId = "18aec81d-b5b0-45f3-1721-8d41560b02f1",
+                            Middlename = "Сергеевна",
+                            Name = "Мария",
+                            PhoneNumber = "+79123456789",
+                            Salary = 60000.0,
+                            Surname = "Кузнецова",
+                            WorkExperience = "01.09.2020 - 01.03.2023 ООО 'Рога и копыта'"
                         });
                 });
 
