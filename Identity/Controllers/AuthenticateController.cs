@@ -27,34 +27,71 @@ namespace Identity.Controllers
         }
         [HttpPost]
         [Route("register")]
-        public async Task<IActionResult> Register([FromBody] RegisterModel model)
+        public async Task<IActionResult> Register([FromBody] RegisterModel model, string role)
         {
-            var userExists = await _userManager.FindByNameAsync(model.Username);
+            var userExists = await _userManager.FindByNameAsync(model.Email);
             if (userExists != null)
                 return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "User already exists!" });
 
-            ApplicationUser user = new()
+            if (role == UserRole.Applicant)
             {
-                Email = model.Email,
-                SecurityStamp = Guid.NewGuid().ToString(),
-                UserName = model.Username,
-                Role = UserRole.User
-            };
+                ApplicationUser user = new()
+                {
+                    Email = model.Email,
+                    SecurityStamp = Guid.NewGuid().ToString(),
+                    UserName = model.Username,
+                    Role = UserRole.Applicant,
+                    Applicant = new Applicant
+                    {
+                        Id = Guid.NewGuid().ToString()
+                    }
+                };
 
-            var result = await _userManager.CreateAsync(user, model.Password);
-            if (!result.Succeeded)
-            {
-                var errors = new List<string>();
-                foreach (var error in result.Errors)
-                    errors.Add(error.Description);
-                return StatusCode(500, new { Status = "Error", Message = $"User creation failes! {string.Join(", ", errors)}" });
+                var result = await _userManager.CreateAsync(user, model.Password);
+                if (!result.Succeeded)
+                {
+                    var errors = new List<string>();
+                    foreach (var error in result.Errors)
+                        errors.Add(error.Description);
+                    return StatusCode(500, new { Status = "Error", Message = $"User creation failes! {string.Join(", ", errors)}" });
+                }
+
+                if (!await _roleManager.RoleExistsAsync(UserRole.Applicant))
+                    await _roleManager.CreateAsync(new IdentityRole(UserRole.Applicant));
+
+                if (await _roleManager.RoleExistsAsync(UserRole.Applicant))
+                    await _userManager.AddToRoleAsync(user, (UserRole.Applicant));
             }
 
-            if (!await _roleManager.RoleExistsAsync(UserRole.User))
-                await _roleManager.CreateAsync(new IdentityRole(UserRole.User));
+            if (role == UserRole.Employer)
+            {
+                ApplicationUser user = new()
+                {
+                    Email = model.Email,
+                    SecurityStamp = Guid.NewGuid().ToString(),
+                    UserName = model.Username,
+                    Role = UserRole.Employer,
+                    Employer = new Employer
+                    {
+                        Id = Guid.NewGuid().ToString()
+                    }
+                };
 
-            if (await _roleManager.RoleExistsAsync(UserRole.User))
-                await _userManager.AddToRoleAsync(user, (UserRole.User));
+                var result = await _userManager.CreateAsync(user, model.Password);
+                if (!result.Succeeded)
+                {
+                    var errors = new List<string>();
+                    foreach (var error in result.Errors)
+                        errors.Add(error.Description);
+                    return StatusCode(500, new { Status = "Error", Message = $"User creation failes! {string.Join(", ", errors)}" });
+                }
+
+                if (!await _roleManager.RoleExistsAsync(UserRole.Employer))
+                    await _roleManager.CreateAsync(new IdentityRole(UserRole.Employer));
+
+                if (await _roleManager.RoleExistsAsync(UserRole.Employer))
+                    await _userManager.AddToRoleAsync(user, (UserRole.Employer));
+            }
 
             return Ok(new { Status = "Success", Message = "User created successfully" });
         }
@@ -87,8 +124,8 @@ namespace Identity.Controllers
             if (!await _roleManager.RoleExistsAsync(UserRole.Admin))
                 await _roleManager.CreateAsync(new IdentityRole(UserRole.Admin));
 
-            if (!await _roleManager.RoleExistsAsync(UserRole.User))
-                await _roleManager.CreateAsync(new IdentityRole(UserRole.User));
+            if (!await _roleManager.RoleExistsAsync(UserRole.Applicant))
+                await _roleManager.CreateAsync(new IdentityRole(UserRole.Applicant));
 
             if (await _roleManager.RoleExistsAsync(UserRole.Admin))
                 await _userManager.AddToRoleAsync(user, UserRole.Admin);

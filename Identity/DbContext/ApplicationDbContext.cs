@@ -21,68 +21,68 @@ namespace Identity.DbContext
             
             
             builder.Entity<ApplicationUser>().HasData(
-                new ApplicationUser { Id = "88aec81d-b5b0-45f3-8721-8d41560b02f7",UserName = "Vanya", Email = "1@mail.ru", PasswordHash = "EtoHash" }
+                new ApplicationUser { Id = "88aec81d-b5b0-45f3-8721-8d41560b02f7", UserName = "Vanya", Email = "1@mail.ru", PasswordHash = "EtoHash", ApplicantId = "88aec81d-b5b0-45f3-0721-1241560b01f7", Role = UserRole.Applicant },
+                new ApplicationUser { Id = "88aec81d-b5b0-45f3-8721-8d41560b0111", UserName = "Ivan", Email = "321@mail.ru", PasswordHash = "EtoHash", EmployerId = "88aec81d-b5b0-43f3-8721-8d21560b02a7", Role = UserRole.Employer }
+            );
+
+            builder.Entity<Applicant>().HasData(
+                new Applicant { Id = "88aec81d-b5b0-45f3-0721-1241560b01f7" }
+            );
+
+            builder.Entity<Gender>().HasData(
+                new Gender { Id = "18aec81d-b5b0-45f3-1721-8d41560b02f1", GenderName = "Мужской"},
+                new Gender { Id = "28aec81d-b5b0-45f3-1721-8d41560b02f1", GenderName = "Женский"}
+            );
+
+            builder.Entity<Resume>().HasData(
+                new Resume
+                {
+                    Id = "88aec81d-b5b0-45f3-1721-8d41560b02f1",
+                    Surname = "Dementiev",
+                    Name = "Vanya",
+                    Middlename = "Petrovich",
+                    Email = "1@mail.ru",
+                    GenderId = "18aec81d-b5b0-45f3-1721-8d41560b02f1",
+                    PhoneNumber = "+79242453413",
+                    WorkExperience = "20.11.2019 - 20.09.2022 Завод имени Ленина",
+                    Salary = 45000,
+                    Education = "Университет управления 'ТИСБИ', Казань, ИТ, Программная инженерия",
+                    Description = "С 2020 года самостоятельно изучаю C#",
+                    ApplicantId = "88aec81d-b5b0-45f3-0721-1241560b01f7"
+                }
+            );
+
+            builder.Entity<Employer>().HasData(
+                 new Employer { Id = "88aec81d-b5b0-43f3-8721-8d21560b02a7", CompanyName = "КГС", Description = "Интернет провайдер"}
             );
 
             builder.Entity<Category>().HasData(
-                new Category{ Id = 1, Name = "Спорт", Description = "Спорт (англ. sport, сокращение от первоначального " +
-                                                                    "старофранц. desport — «игра», «развлечение») — " +
-                                                                    "организованная по определённым правилам деятельность " +
-                                                                    "людей (спортсменов), состоящая в сопоставлении их " +
-                                                                    "физических и/или интеллектуальных способностей. "},
-                new Category {Id = 2, Name = "Киберспорт", Description = "Ки́берспо́рт (также известен как «компью́терный " +
-                                                                         "спорт» или «электро́нный спорт», англ. esports) " +
-                                                                         "— командное или индивидуальное соревнование на " +
-                                                                         "основе компьютерных видеоигр. В России " +
-                                                                         "признан официальным видом спорта."},
-                new Category { Id = 3, Name = "Аниме", Description = "Аниме́  — японская мультипликация. В отличие от " +
-                                                                     "мультфильмов других стран, предназначенных в " +
-                                                                     "основном для просмотра детьми, бо́льшая часть " +
-                                                                     "выпускаемого аниме рассчитана на подростковую и " +
-                                                                     "имеет высокую популярность в мире. "},
-                new Category {Id = 4, Name = "Кино и сериалы", Description = "Ну, тут очевидно про кино и сериалы, да?"},
-                
-                new Category {Id =5, Name = "Шаурма и друзья", Description = "Всем небезразличным к шаурме посвящается"},
-                new Category {Id = 6, Name = "Путешествия", Description = "Путеше́ствие — передвижение по какой-либо " +
-                                                                          "территории или акватории с целью их изучения, " +
-                                                                          "а также с общеобразовательными, познавательными, " +
-                                                                          "спортивными и другими целями."},
-                new Category {Id = 7, Name = "Музыка", Description = "этот вид «отражает действительность и воздействует " +
-                                                                     "на человека посредством осмысленных и особым образом " +
-                                                                     "организованных по высоте и во времени звуковых " +
-                                                                     "последований"},
-                new Category {Id =8, Name = "Арт", Description = "одна из наиболее общих категорий эстетики, " +
-                                                                 "искусствознания и художественной практики"},
-                new Category {Id = 9, Name = "Мемы", Description = "единица значимой для культуры информации."},
-                new Category {Id = 10, Name = "Культура", Description = "под культурой понимают человеческую деятельность " +
-                                                                        "в её самых разных проявлениях, включая все формы " +
-                                                                        "и способы человеческого самовыражения и самопознания"},
-                new Category{Id = 11, Name = "Игры", Description = "форма деятельности в условных ситуациях, направленная " +
-                                                                   "на воссоздание и усвоение общественного опыта, " +
-                                                                   "фиксированного в социально закрепленных способах " +
-                                                                   "осуществления предметных действий, в предметах науки " +
-                                                                   "и культуры."}
-                
+                new Category{ Id = 1, Name = "ИТ", Description = "ИТ" },
+                new Category {Id = 2, Name = "Транспорт", Description = "Транспорт" },
+                new Category { Id = 3, Name = "Закупки", Description = "Закупки" },
+                new Category {Id = 4, Name = "Финансы", Description = "Финансы" },
+                new Category {Id =5, Name = "Медицина", Description = "Медицина" },
+                new Category {Id = 6, Name = "Рабочий персонал", Description = "Рабочий персонал"},
+                new Category {Id = 7, Name = "Юристы", Description = "Юристы" }
                 );
 
             builder.Entity<Post>().HasData(
-                new Post { Id = 1, Title = "Спорт", Description = "Описание спорта", Content = "Про спорт и все такое", CategoryId = 1 , ApplicationUserId = "88aec81d-b5b0-45f3-8721-8d41560b02f7" },
-                new Post { Id = 2, Title = "Киберспорт", Description = "Описание киберспорта", Content = "Про киберспорт и все такое", CategoryId = 2, ApplicationUserId = "88aec81d-b5b0-45f3-8721-8d41560b02f7" },
-                new Post { Id = 3, Title = "Киберспорт", Description = "Описание киберспорта", Content = "Про киберспорт и все такое", CategoryId = 2, ApplicationUserId = "88aec81d-b5b0-45f3-8721-8d41560b02f7" },
-                new Post { Id = 4, Title = "Cпортмашины", Description = "Описание спортмашины", Content = "Про спортмашины и все такое", CategoryId = 3, ApplicationUserId = "88aec81d-b5b0-45f3-8721-8d41560b02f7" });
+                new Post { Id = 1, Title = "Младший программист", Description = "Требуемый опыт работы: 1–3 года Полная занятость, полный день", Content = "Что от Вас требуется? Знание основ SQL, 1С (выбор, связи, вложенные запросы); Аналитический склад ума; Стремление к саморазвитию; Инициативность, желание искать новые инструменты и пути решения поставленных задач.", CategoryId = 1 , EmployerId = "88aec81d-b5b0-43f3-8721-8d21560b02a7", Salary = 40000 },
+                new Post { Id = 2, Title = "Программист С# (middle)", Description = "Требуемый опыт работы: 1–3 года Полная занятость, гибкий график", Content = "Требования: - C# + .NET 4.7 с опытом разработки не менее 2 лет - ООП - уверенное владение. - Опыт разработки desktop приложений (Windows). - Многопоточные приложения - уверенное владение. - WPF - уверенное владение - знание MVVM, понимание принципов SOLID, DI Будет плюсом: WinForms, Unity, Prism", CategoryId = 1, EmployerId = "88aec81d-b5b0-43f3-8721-8d21560b02a7", Salary = 100000 },
+                new Post { Id = 3, Title = "Разработчик C# (Middle)", Description = "Требуемый опыт работы: 1–3 года Полная занятость, удаленная работа", Content = "Требования: Уверенные знания C#; Знание ASP.NET Core; Знание SQL, опыт работы с MSSQL, PostgreSQL; Entity Framework Core; Понимание ООП; Знать и применять на практике шаблоны проектирования; Опыт разработки REST API; Опыт работы с GIT.", CategoryId = 1, EmployerId = "88aec81d-b5b0-43f3-8721-8d21560b02a7", Salary = 160000 }
+                );
 
             builder.Entity<Comment>().HasData(
-                new Comment { Id = 1, Content = "Норм тема", PostId = 1, ApplicationUserId = "88aec81d-b5b0-45f3-8721-8d41560b02f7", CreatedDate = DateTime.UtcNow },
-                new Comment { Id = 2, Content = "Норм тема", PostId = 1, ApplicationUserId = "88aec81d-b5b0-45f3-8721-8d41560b02f7", CreatedDate = DateTime.UtcNow },
-                new Comment { Id = 3, Content = "Норм тема", PostId = 2, ApplicationUserId = "88aec81d-b5b0-45f3-8721-8d41560b02f7", CreatedDate = DateTime.UtcNow },
-                new Comment { Id = 4, Content = "Норм тема", PostId = 2, ApplicationUserId = "88aec81d-b5b0-45f3-8721-8d41560b02f7", CreatedDate = DateTime.UtcNow });
+                new Comment { Id = 1, Content = "Норм тема", EmployerId = "88aec81d-b5b0-43f3-8721-8d21560b02a7", ApplicantId = "88aec81d-b5b0-45f3-0721-1241560b01f7", CreatedDate = DateTime.UtcNow }
+                );
 
             builder.Entity<Rating>().HasData(
-                new Rating { Id = "188aec81d-b5b0-45f3-8721-8d41560b02f7", LikeStatus = true, PostId = 1, ApplicationUserId = "88aec81d-b5b0-45f3-8721-8d41560b02f7" },
-                new Rating { Id = "288aec81d-b5b0-45f3-8721-8d41560b02f7", LikeStatus = true, PostId = 1, ApplicationUserId = "88aec81d-b5b0-45f3-8721-8d41560b02f7" },
-                new Rating { Id = "388aec81d-b5b0-45f3-8721-8d41560b02f7", LikeStatus = false, PostId = 2, ApplicationUserId = "88aec81d-b5b0-45f3-8721-8d41560b02f7" },
-                new Rating { Id = "488aec81d-b5b0-45f3-8721-8d41560b02f7", LikeStatus = false, PostId = 2, ApplicationUserId = "88aec81d-b5b0-45f3-8721-8d41560b02f7" }
+                new Rating { Id = "188aec81d-b5b0-45f3-8721-8d41560b02f7", LikeStatus = true, EmployerId = "88aec81d-b5b0-43f3-8721-8d21560b02a7", ApplicantId = "88aec81d-b5b0-45f3-0721-1241560b01f7" }
                 );
+
+            builder.Entity<Feedback>().HasData(
+               new Feedback { Id = "188aec81d-b5b0-45f3-0721-1241560b01f7", ApplicantId = "88aec81d-b5b0-45f3-0721-1241560b01f7", PostId = 1 }
+           );
         }
         
     }

@@ -3,6 +3,7 @@ using BlogSN.Backend.Exceptions;
 using BlogSN.Models;
 using Microsoft.EntityFrameworkCore;
 using Models.ModelsBlogSN;
+using Models.ModelsIdentity.IdentityAuth;
 
 namespace BlogSN.Backend.Services;
 
@@ -10,18 +11,20 @@ public class PostService : IPostService
 {
     private readonly BlogSnDbContext _context;
     private readonly IUserServive _userServive;
-    
+    private readonly IEmployerService _employerService;
 
-    public PostService(BlogSnDbContext context, IUserServive userServive)
+
+    public PostService(BlogSnDbContext context, IUserServive userServive, IEmployerService employerService)
     {
         _context = context;
         _userServive = userServive;
+        _employerService = employerService;
     }
 
     public async Task CreatePost(Post post, CancellationToken cancellationToken)
     {
         await _context.Post.AddAsync(post, cancellationToken);
-        var user = await _userServive.GetUserById(post.ApplicationUserId, cancellationToken);
+        var user = await _employerService.GetEmployerById(post.EmployerId, cancellationToken);
         user.PostsCount++;
 
         try
@@ -40,18 +43,30 @@ public class PostService : IPostService
     public async Task DeletePostById(int id, CancellationToken cancellationToken)
     {
         var post = await GetPostById(id, cancellationToken);
-        if (!(post.ApplicationUserId == null)){
-            var user = await _userServive.GetUserById(post.ApplicationUserId, cancellationToken);
+        if (!(post.EmployerId == null)){
+            var user = await _employerService.GetEmployerById(post.EmployerId, cancellationToken);
             user.PostsCount--;
         }
         _context.Post.Remove(post);
         await _context.SaveChangesAsync(cancellationToken);
     }
 
-    public async Task<Post> GetPostById(int id, CancellationToken cancellationToken)
+	public async Task<IEnumerable<Applicant>> GetApplicantsFeedbackedPostByPostId(int postId, CancellationToken cancellationToken)
+	{
+        var applicantsFeedbackedPost = await _context.Applicant.Include(p=> p.Feedbacks).Where(x => x.Feedbacks.Where(p=> p.PostId == postId) != null).ToListAsync(cancellationToken);
+
+        if (!applicantsFeedbackedPost.Any())
+        {
+            throw new NotFoundException($"Employer has no comments");
+        }
+
+        return applicantsFeedbackedPost;
+    }
+
+	public async Task<Post> GetPostById(int id, CancellationToken cancellationToken)
     {
 
-        var post = await _context.Post.Include(p => p.ApplicationUser).Include(p=> p.Category).FirstOrDefaultAsync(t => t.Id == id, cancellationToken);
+        var post = await _context.Post.Include(p => p.Employer).Include(p=> p.Category).FirstOrDefaultAsync(t => t.Id == id, cancellationToken);
 
         if (post is null)
         {
@@ -61,9 +76,10 @@ public class PostService : IPostService
         return post;
 
     }
+
     public async Task<IEnumerable<Post>> GetPosts(CancellationToken cancellationToken)
     {
-        var post = await _context.Post.Include(p => p.ApplicationUser).Include(p=> p.Category).ToListAsync(cancellationToken);
+        var post = await _context.Post.Include(p => p.Employer).Include(p=> p.Category).ToListAsync(cancellationToken);
 
         if (!post.Any())
         {
@@ -85,10 +101,4 @@ public class PostService : IPostService
         _context.Entry(post).State = EntityState.Modified;
         await _context.SaveChangesAsync(cancellationToken);
     }
-
-    public async Task<IEnumerable<Comment>> GetCommnetsByPost(int postId, CancellationToken cancellationToken)
-    {
-        return await _context.Comment.Where(c => c.PostId == postId).Include(c => c.ApplicationUser).ToListAsync(cancellationToken);
-    }
-
 }

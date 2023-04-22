@@ -10,6 +10,7 @@ using Models.ModelsIdentity.IdentityAuth;
 using Newtonsoft.Json;
 using System.Text;
 using BlogSN.Backend.Middleware;
+using BlogSN.Backend.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -50,10 +51,7 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
     options.Password.RequireLowercase = true;
     options.Password.RequireNonAlphanumeric = false;
     options.Password.RequireUppercase = true;
-})
-
-                .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddDefaultTokenProviders();
+}).AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
 
 builder.Services.AddAuthentication(options => {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -122,6 +120,14 @@ builder.Services.AddTransient<ICommentService, CommentService>();
 builder.Services.AddTransient<IRatingService, RatingService>();
 
 builder.Services.AddTransient<IUserServive, UserServive>();
+
+builder.Services.AddTransient<IEmployerService, EmployerService>();
+
+builder.Services.AddTransient<IApplicantService, ApplicantService>();
+
+builder.Services.AddTransient<IResumeService, ResumeService>();
+
+builder.Services.AddTransient<IFeedbackService, FeedbackService>();
 
 builder.Services.AddScoped<UserManager<ApplicationUser>>();
 builder.Services.AddScoped<RoleManager<IdentityRole>>();

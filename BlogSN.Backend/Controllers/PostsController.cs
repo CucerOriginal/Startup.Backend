@@ -11,6 +11,7 @@ using BlogSN.Models;
 using BlogSN.Backend.Services;
 using Models.ModelsBlogSN;
 using Microsoft.AspNetCore.Authorization;
+using Models.ModelsIdentity.IdentityAuth;
 
 namespace BlogSN.Backend.Controllers
 {
@@ -41,7 +42,11 @@ namespace BlogSN.Backend.Controllers
             return Ok(await _service.GetPosts(cancellationToken));
         }
 
-       
+        [HttpGet("{id}/applicants")]
+        public async Task<ActionResult<IEnumerable<Applicant>>> GetApplicantsFeedbackedPost(int postId, CancellationToken cancellationToken)
+        {
+            return Ok(await _service.GetApplicantsFeedbackedPostByPostId(postId, cancellationToken));
+        }
 
         // GET: api/Posts/5
         /// <summary>
@@ -73,7 +78,7 @@ namespace BlogSN.Backend.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpPut("{id}")]
-        [Authorize]
+        //[Authorize]
         public async Task<IActionResult> PutPost(int id, [FromBody]Post post, CancellationToken cancellationToken)
         {
             await _service.UpdatePostById(id, post, cancellationToken);
@@ -90,7 +95,7 @@ namespace BlogSN.Backend.Controllers
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
         [HttpPost]
-        [Authorize]
+        //[Authorize]
         [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(Post))]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<Post>> PostPost(Post post, CancellationToken cancellationToken)
@@ -108,7 +113,7 @@ namespace BlogSN.Backend.Controllers
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
         [HttpDelete("{id}")]
-        [Authorize]
+        //[Authorize]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> DeletePost(int id, CancellationToken cancellationToken)
@@ -117,12 +122,5 @@ namespace BlogSN.Backend.Controllers
             
             return NoContent();
         }
-        
-        [HttpGet("{postId}/comments")]
-        public async Task<ActionResult<IEnumerable<Post>>> GetCategoryPosts(int postId, CancellationToken cancellationToken)
-        {
-            return Ok(await _service.GetCommnetsByPost(postId, cancellationToken));
-        }
-
     }
 }

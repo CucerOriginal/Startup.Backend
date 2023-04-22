@@ -23,8 +23,8 @@ public static class SeedData
             if (!roleManager.RoleExistsAsync(UserRole.Admin).Result)
                 _ = roleManager.CreateAsync(new IdentityRole(UserRole.Admin)).Result;
 
-            if (!roleManager.RoleExistsAsync(UserRole.User).Result)
-                _ = roleManager.CreateAsync(new IdentityRole(UserRole.User)).Result;
+            if (!roleManager.RoleExistsAsync(UserRole.Applicant).Result)
+                _ = roleManager.CreateAsync(new IdentityRole(UserRole.Applicant)).Result;
 
             
             if (result.Succeeded)

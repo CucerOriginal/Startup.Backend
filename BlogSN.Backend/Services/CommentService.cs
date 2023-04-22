@@ -10,19 +10,23 @@ namespace BlogSN.Backend.Services
     public class CommentService : ICommentService
     {
         private readonly BlogSnDbContext _context;
-        private readonly IPostService _postService; 
+        private readonly IPostService _postService;
+        private readonly IUserServive _userServive;
+        private readonly IEmployerService _employerService;
 
-        public CommentService(BlogSnDbContext context, IPostService postService)
+        public CommentService(BlogSnDbContext context, IPostService postService, IUserServive userServive, IEmployerService employerService)
         {
             _context = context;
             _postService = postService;
+            _userServive = userServive;
+            _employerService = employerService;
         }
 
         public async Task CreateComment(Comment comment, CancellationToken cancellationToken)
         {
             await _context.Comment.AddAsync(comment, cancellationToken);
-            var post = await _postService.GetPostById(comment.PostId, cancellationToken);
-            post.CommentsCount++;
+            var employer = await _employerService.GetEmployerById(comment.EmployerId, cancellationToken);
+            employer.CommentsCount++;
             await _context.SaveChangesAsync(cancellationToken);
         }
 
@@ -39,8 +43,8 @@ namespace BlogSN.Backend.Services
         public async Task DeleteCommentById(int id, CancellationToken cancellationToken)
         {
             var comment = await GetCommentById(id, cancellationToken);
-            var post = await _postService.GetPostById(comment.PostId, cancellationToken);
-            post.CommentsCount--;
+            var employer = await _employerService.GetEmployerById(comment.EmployerId, cancellationToken);
+            employer.CommentsCount--;
             _context.Comment.Remove(comment);
             await _context.SaveChangesAsync(cancellationToken);
         }

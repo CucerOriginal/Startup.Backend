@@ -6,6 +6,7 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using BlogSN.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace Models.ModelsBlogSN
 {
@@ -16,16 +17,21 @@ namespace Models.ModelsBlogSN
             CreatedDate = DateTime.UtcNow;
         }
 
+        [Key]
         public int Id { get; set; }
 
         public string? Content { get; set; }
 
-        public int PostId { get; set; }
+        public string? EmployerId { get; set; }
+
         [JsonIgnore]
-        public Post? Post { get; set; }
-        public string? ApplicationUserId { get; set; }
+        public Employer? Employer { get; set; }
+
+        public string? ApplicantId { get; set; }
+
         [JsonIgnore]
-        public ApplicationUser? ApplicationUser { get; set; }
+        public Applicant? Applicant { get; set; }
+
         public DateTime CreatedDate { get; set; }
     }
 }

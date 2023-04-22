@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Identity.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221028133918_Initial")]
+    [Migration("20230422132912_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -46,68 +46,44 @@ namespace Identity.Migrations
                         new
                         {
                             Id = 1,
-                            Description = "Спорт (англ. sport, сокращение от первоначального старофранц. desport — «игра», «развлечение») — организованная по определённым правилам деятельность людей (спортсменов), состоящая в сопоставлении их физических и/или интеллектуальных способностей. ",
-                            Name = "Спорт"
+                            Description = "ИТ",
+                            Name = "ИТ"
                         },
                         new
                         {
                             Id = 2,
-                            Description = "Ки́берспо́рт (также известен как «компью́терный спорт» или «электро́нный спорт», англ. esports) — командное или индивидуальное соревнование на основе компьютерных видеоигр. В России признан официальным видом спорта.",
-                            Name = "Киберспорт"
+                            Description = "Транспорт",
+                            Name = "Транспорт"
                         },
                         new
                         {
                             Id = 3,
-                            Description = "Аниме́  — японская мультипликация. В отличие от мультфильмов других стран, предназначенных в основном для просмотра детьми, бо́льшая часть выпускаемого аниме рассчитана на подростковую и имеет высокую популярность в мире. ",
-                            Name = "Аниме"
+                            Description = "Закупки",
+                            Name = "Закупки"
                         },
                         new
                         {
                             Id = 4,
-                            Description = "Ну, тут очевидно про кино и сериалы, да?",
-                            Name = "Кино и сериалы"
+                            Description = "Финансы",
+                            Name = "Финансы"
                         },
                         new
                         {
                             Id = 5,
-                            Description = "Всем небезразличным к шаурме посвящается",
-                            Name = "Шаурма и друзья"
+                            Description = "Медицина",
+                            Name = "Медицина"
                         },
                         new
                         {
                             Id = 6,
-                            Description = "Путеше́ствие — передвижение по какой-либо территории или акватории с целью их изучения, а также с общеобразовательными, познавательными, спортивными и другими целями.",
-                            Name = "Путешествия"
+                            Description = "Рабочий персонал",
+                            Name = "Рабочий персонал"
                         },
                         new
                         {
                             Id = 7,
-                            Description = "этот вид «отражает действительность и воздействует на человека посредством осмысленных и особым образом организованных по высоте и во времени звуковых последований",
-                            Name = "Музыка"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Description = "одна из наиболее общих категорий эстетики, искусствознания и художественной практики",
-                            Name = "Арт"
-                        },
-                        new
-                        {
-                            Id = 9,
-                            Description = "единица значимой для культуры информации.",
-                            Name = "Мемы"
-                        },
-                        new
-                        {
-                            Id = 10,
-                            Description = "под культурой понимают человеческую деятельность в её самых разных проявлениях, включая все формы и способы человеческого самовыражения и самопознания",
-                            Name = "Культура"
-                        },
-                        new
-                        {
-                            Id = 11,
-                            Description = "форма деятельности в условных ситуациях, направленная на воссоздание и усвоение общественного опыта, фиксированного в социально закрепленных способах осуществления предметных действий, в предметах науки и культуры.",
-                            Name = "Игры"
+                            Description = "Юристы",
+                            Name = "Юристы"
                         });
                 });
 
@@ -119,16 +95,7 @@ namespace Identity.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("ApplicationUserId")
-                        .HasColumnType("text");
-
                     b.Property<int?>("CategoryId")
-                        .HasColumnType("integer");
-
-                    b.Property<float>("CollectedSum")
-                        .HasColumnType("real");
-
-                    b.Property<int>("CommentsCount")
                         .HasColumnType("integer");
 
                     b.Property<string>("Content")
@@ -140,20 +107,20 @@ namespace Identity.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("text");
 
-                    b.Property<float>("NecessarySum")
-                        .HasColumnType("real");
+                    b.Property<string>("EmployerId")
+                        .HasColumnType("text");
 
-                    b.Property<int>("RatingCount")
-                        .HasColumnType("integer");
+                    b.Property<double>("Salary")
+                        .HasColumnType("double precision");
 
                     b.Property<string>("Title")
                         .HasColumnType("text");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ApplicationUserId");
-
                     b.HasIndex("CategoryId");
+
+                    b.HasIndex("EmployerId");
 
                     b.ToTable("Post");
 
@@ -161,58 +128,35 @@ namespace Identity.Migrations
                         new
                         {
                             Id = 1,
-                            ApplicationUserId = "88aec81d-b5b0-45f3-8721-8d41560b02f7",
                             CategoryId = 1,
-                            CollectedSum = 0f,
-                            CommentsCount = 0,
-                            Content = "Про спорт и все такое",
-                            DateCreated = new DateTime(2022, 10, 28, 13, 39, 17, 848, DateTimeKind.Utc).AddTicks(673),
-                            Description = "Описание спорта",
-                            NecessarySum = 0f,
-                            RatingCount = 0,
-                            Title = "Спорт"
+                            Content = "Что от Вас требуется? Знание основ SQL, 1С (выбор, связи, вложенные запросы); Аналитический склад ума; Стремление к саморазвитию; Инициативность, желание искать новые инструменты и пути решения поставленных задач.",
+                            DateCreated = new DateTime(2023, 4, 22, 13, 29, 12, 533, DateTimeKind.Utc).AddTicks(4779),
+                            Description = "Требуемый опыт работы: 1–3 года Полная занятость, полный день",
+                            EmployerId = "88aec81d-b5b0-43f3-8721-8d21560b02a7",
+                            Salary = 40000.0,
+                            Title = "Младший программист"
                         },
                         new
                         {
                             Id = 2,
-                            ApplicationUserId = "88aec81d-b5b0-45f3-8721-8d41560b02f7",
-                            CategoryId = 2,
-                            CollectedSum = 0f,
-                            CommentsCount = 0,
-                            Content = "Про киберспорт и все такое",
-                            DateCreated = new DateTime(2022, 10, 28, 13, 39, 17, 848, DateTimeKind.Utc).AddTicks(676),
-                            Description = "Описание киберспорта",
-                            NecessarySum = 0f,
-                            RatingCount = 0,
-                            Title = "Киберспорт"
+                            CategoryId = 1,
+                            Content = "Требования: - C# + .NET 4.7 с опытом разработки не менее 2 лет - ООП - уверенное владение. - Опыт разработки desktop приложений (Windows). - Многопоточные приложения - уверенное владение. - WPF - уверенное владение - знание MVVM, понимание принципов SOLID, DI Будет плюсом: WinForms, Unity, Prism",
+                            DateCreated = new DateTime(2023, 4, 22, 13, 29, 12, 533, DateTimeKind.Utc).AddTicks(4783),
+                            Description = "Требуемый опыт работы: 1–3 года Полная занятость, гибкий график",
+                            EmployerId = "88aec81d-b5b0-43f3-8721-8d21560b02a7",
+                            Salary = 100000.0,
+                            Title = "Программист С# (middle)"
                         },
                         new
                         {
                             Id = 3,
-                            ApplicationUserId = "88aec81d-b5b0-45f3-8721-8d41560b02f7",
-                            CategoryId = 2,
-                            CollectedSum = 0f,
-                            CommentsCount = 0,
-                            Content = "Про киберспорт и все такое",
-                            DateCreated = new DateTime(2022, 10, 28, 13, 39, 17, 848, DateTimeKind.Utc).AddTicks(677),
-                            Description = "Описание киберспорта",
-                            NecessarySum = 0f,
-                            RatingCount = 0,
-                            Title = "Киберспорт"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            ApplicationUserId = "88aec81d-b5b0-45f3-8721-8d41560b02f7",
-                            CategoryId = 3,
-                            CollectedSum = 0f,
-                            CommentsCount = 0,
-                            Content = "Про спортмашины и все такое",
-                            DateCreated = new DateTime(2022, 10, 28, 13, 39, 17, 848, DateTimeKind.Utc).AddTicks(678),
-                            Description = "Описание спортмашины",
-                            NecessarySum = 0f,
-                            RatingCount = 0,
-                            Title = "Cпортмашины"
+                            CategoryId = 1,
+                            Content = "Требования: Уверенные знания C#; Знание ASP.NET Core; Знание SQL, опыт работы с MSSQL, PostgreSQL; Entity Framework Core; Понимание ООП; Знать и применять на практике шаблоны проектирования; Опыт разработки REST API; Опыт работы с GIT.",
+                            DateCreated = new DateTime(2023, 4, 22, 13, 29, 12, 533, DateTimeKind.Utc).AddTicks(4784),
+                            Description = "Требуемый опыт работы: 1–3 года Полная занятость, удаленная работа",
+                            EmployerId = "88aec81d-b5b0-43f3-8721-8d21560b02a7",
+                            Salary = 160000.0,
+                            Title = "Разработчик C# (Middle)"
                         });
                 });
 
@@ -356,7 +300,7 @@ namespace Identity.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("ApplicationUserId")
+                    b.Property<string>("ApplicantId")
                         .HasColumnType("text");
 
                     b.Property<string>("Content")
@@ -365,14 +309,14 @@ namespace Identity.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int>("PostId")
-                        .HasColumnType("integer");
+                    b.Property<string>("EmployerId")
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ApplicationUserId");
+                    b.HasIndex("ApplicantId");
 
-                    b.HasIndex("PostId");
+                    b.HasIndex("EmployerId");
 
                     b.ToTable("Comment");
 
@@ -380,34 +324,38 @@ namespace Identity.Migrations
                         new
                         {
                             Id = 1,
-                            ApplicationUserId = "88aec81d-b5b0-45f3-8721-8d41560b02f7",
+                            ApplicantId = "88aec81d-b5b0-45f3-0721-1241560b01f7",
                             Content = "Норм тема",
-                            CreatedDate = new DateTime(2022, 10, 28, 13, 39, 17, 848, DateTimeKind.Utc).AddTicks(697),
+                            CreatedDate = new DateTime(2023, 4, 22, 13, 29, 12, 533, DateTimeKind.Utc).AddTicks(4805),
+                            EmployerId = "88aec81d-b5b0-43f3-8721-8d21560b02a7"
+                        });
+                });
+
+            modelBuilder.Entity("Models.ModelsBlogSN.Feedback", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("text");
+
+                    b.Property<string>("ApplicantId")
+                        .HasColumnType("text");
+
+                    b.Property<int>("PostId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ApplicantId");
+
+                    b.HasIndex("PostId");
+
+                    b.ToTable("Feedback");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "188aec81d-b5b0-45f3-0721-1241560b01f7",
+                            ApplicantId = "88aec81d-b5b0-45f3-0721-1241560b01f7",
                             PostId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            ApplicationUserId = "88aec81d-b5b0-45f3-8721-8d41560b02f7",
-                            Content = "Норм тема",
-                            CreatedDate = new DateTime(2022, 10, 28, 13, 39, 17, 848, DateTimeKind.Utc).AddTicks(699),
-                            PostId = 1
-                        },
-                        new
-                        {
-                            Id = 3,
-                            ApplicationUserId = "88aec81d-b5b0-45f3-8721-8d41560b02f7",
-                            Content = "Норм тема",
-                            CreatedDate = new DateTime(2022, 10, 28, 13, 39, 17, 848, DateTimeKind.Utc).AddTicks(700),
-                            PostId = 2
-                        },
-                        new
-                        {
-                            Id = 4,
-                            ApplicationUserId = "88aec81d-b5b0-45f3-8721-8d41560b02f7",
-                            Content = "Норм тема",
-                            CreatedDate = new DateTime(2022, 10, 28, 13, 39, 17, 848, DateTimeKind.Utc).AddTicks(702),
-                            PostId = 2
                         });
                 });
 
@@ -416,19 +364,20 @@ namespace Identity.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("text");
 
-                    b.Property<string>("ApplicationUserId")
-                        .IsRequired()
+                    b.Property<string>("ApplicantId")
+                        .HasColumnType("text");
+
+                    b.Property<string>("EmployerId")
                         .HasColumnType("text");
 
                     b.Property<bool>("LikeStatus")
                         .HasColumnType("boolean");
 
-                    b.Property<int>("PostId")
-                        .HasColumnType("integer");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("PostId");
+                    b.HasIndex("ApplicantId");
+
+                    b.HasIndex("EmployerId");
 
                     b.ToTable("Rating");
 
@@ -436,30 +385,28 @@ namespace Identity.Migrations
                         new
                         {
                             Id = "188aec81d-b5b0-45f3-8721-8d41560b02f7",
-                            ApplicationUserId = "88aec81d-b5b0-45f3-8721-8d41560b02f7",
-                            LikeStatus = true,
-                            PostId = 1
-                        },
+                            ApplicantId = "88aec81d-b5b0-45f3-0721-1241560b01f7",
+                            EmployerId = "88aec81d-b5b0-43f3-8721-8d21560b02a7",
+                            LikeStatus = true
+                        });
+                });
+
+            modelBuilder.Entity("Models.ModelsIdentity.IdentityAuth.Applicant", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Requisite")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Applicant");
+
+                    b.HasData(
                         new
                         {
-                            Id = "288aec81d-b5b0-45f3-8721-8d41560b02f7",
-                            ApplicationUserId = "88aec81d-b5b0-45f3-8721-8d41560b02f7",
-                            LikeStatus = true,
-                            PostId = 1
-                        },
-                        new
-                        {
-                            Id = "388aec81d-b5b0-45f3-8721-8d41560b02f7",
-                            ApplicationUserId = "88aec81d-b5b0-45f3-8721-8d41560b02f7",
-                            LikeStatus = false,
-                            PostId = 2
-                        },
-                        new
-                        {
-                            Id = "488aec81d-b5b0-45f3-8721-8d41560b02f7",
-                            ApplicationUserId = "88aec81d-b5b0-45f3-8721-8d41560b02f7",
-                            LikeStatus = false,
-                            PostId = 2
+                            Id = "88aec81d-b5b0-45f3-0721-1241560b01f7"
                         });
                 });
 
@@ -471,6 +418,9 @@ namespace Identity.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("integer");
 
+                    b.Property<string>("ApplicantId")
+                        .HasColumnType("text");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("text");
@@ -481,6 +431,9 @@ namespace Identity.Migrations
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("boolean");
+
+                    b.Property<string>("EmployerId")
+                        .HasColumnType("text");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("boolean");
@@ -505,9 +458,6 @@ namespace Identity.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("boolean");
 
-                    b.Property<int>("PostsCount")
-                        .HasColumnType("integer");
-
                     b.Property<string>("Role")
                         .HasColumnType("text");
 
@@ -523,6 +473,12 @@ namespace Identity.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ApplicantId")
+                        .IsUnique();
+
+                    b.HasIndex("EmployerId")
+                        .IsUnique();
+
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
 
@@ -537,32 +493,177 @@ namespace Identity.Migrations
                         {
                             Id = "88aec81d-b5b0-45f3-8721-8d41560b02f7",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "0c0b4219-b3f3-4d3e-bb72-ca48a45710df",
+                            ApplicantId = "88aec81d-b5b0-45f3-0721-1241560b01f7",
+                            ConcurrencyStamp = "f6d1b285-fabe-4f5d-8e1b-b0793fee780a",
                             Email = "1@mail.ru",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PasswordHash = "EtoHash",
                             PhoneNumberConfirmed = false,
-                            PostsCount = 0,
-                            SecurityStamp = "b6776187-7a20-4f8c-83b6-00c0fbf9b53c",
+                            Role = "Applicant",
+                            SecurityStamp = "d7c80b33-8f3f-4dd5-8cc3-1cd0ab2fbad0",
                             TwoFactorEnabled = false,
                             UserName = "Vanya"
+                        },
+                        new
+                        {
+                            Id = "88aec81d-b5b0-45f3-8721-8d41560b0111",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "d9d72123-602c-4e98-a95c-0a98c7cd4105",
+                            Email = "321@mail.ru",
+                            EmailConfirmed = false,
+                            EmployerId = "88aec81d-b5b0-43f3-8721-8d21560b02a7",
+                            LockoutEnabled = false,
+                            PasswordHash = "EtoHash",
+                            PhoneNumberConfirmed = false,
+                            Role = "Employer",
+                            SecurityStamp = "f089199f-92b7-4db2-91d0-4670ff382f81",
+                            TwoFactorEnabled = false,
+                            UserName = "Ivan"
+                        });
+                });
+
+            modelBuilder.Entity("Models.ModelsIdentity.IdentityAuth.Employer", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("text");
+
+                    b.Property<int>("CommentsCount")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("CompanyName")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("text");
+
+                    b.Property<int>("PostsCount")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("RatingCount")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Employer");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "88aec81d-b5b0-43f3-8721-8d21560b02a7",
+                            CommentsCount = 0,
+                            CompanyName = "КГС",
+                            Description = "Интернет провайдер",
+                            PostsCount = 0,
+                            RatingCount = 0
+                        });
+                });
+
+            modelBuilder.Entity("Models.ModelsIdentity.IdentityAuth.Gender", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("text");
+
+                    b.Property<string>("GenderName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Gender");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "18aec81d-b5b0-45f3-1721-8d41560b02f1",
+                            GenderName = "Мужской"
+                        },
+                        new
+                        {
+                            Id = "28aec81d-b5b0-45f3-1721-8d41560b02f1",
+                            GenderName = "Женский"
+                        });
+                });
+
+            modelBuilder.Entity("Models.ModelsIdentity.IdentityAuth.Resume", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("text");
+
+                    b.Property<string>("ApplicantId")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Education")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("text");
+
+                    b.Property<string>("GenderId")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Middlename")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("text");
+
+                    b.Property<double>("Salary")
+                        .HasColumnType("double precision");
+
+                    b.Property<string>("Surname")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("WorkExperience")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ApplicantId");
+
+                    b.HasIndex("GenderId");
+
+                    b.ToTable("Resume");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "88aec81d-b5b0-45f3-1721-8d41560b02f1",
+                            ApplicantId = "88aec81d-b5b0-45f3-0721-1241560b01f7",
+                            Description = "С 2020 года самостоятельно изучаю C#",
+                            Education = "Университет управления 'ТИСБИ', Казань, ИТ, Программная инженерия",
+                            Email = "1@mail.ru",
+                            GenderId = "18aec81d-b5b0-45f3-1721-8d41560b02f1",
+                            Middlename = "Petrovich",
+                            Name = "Vanya",
+                            PhoneNumber = "+79242453413",
+                            Salary = 45000.0,
+                            Surname = "Dementiev",
+                            WorkExperience = "20.11.2019 - 20.09.2022 Завод имени Ленина"
                         });
                 });
 
             modelBuilder.Entity("BlogSN.Models.Post", b =>
                 {
-                    b.HasOne("Models.ModelsIdentity.IdentityAuth.ApplicationUser", "ApplicationUser")
-                        .WithMany("Posts")
-                        .HasForeignKey("ApplicationUserId");
-
                     b.HasOne("BlogSN.Models.Category", "Category")
                         .WithMany("Posts")
                         .HasForeignKey("CategoryId");
 
-                    b.Navigation("ApplicationUser");
+                    b.HasOne("Models.ModelsIdentity.IdentityAuth.Employer", "Employer")
+                        .WithMany("Posts")
+                        .HasForeignKey("EmployerId");
 
                     b.Navigation("Category");
+
+                    b.Navigation("Employer");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -618,28 +719,79 @@ namespace Identity.Migrations
 
             modelBuilder.Entity("Models.ModelsBlogSN.Comment", b =>
                 {
-                    b.HasOne("Models.ModelsIdentity.IdentityAuth.ApplicationUser", "ApplicationUser")
+                    b.HasOne("Models.ModelsIdentity.IdentityAuth.Applicant", "Applicant")
                         .WithMany("Comments")
-                        .HasForeignKey("ApplicationUserId");
+                        .HasForeignKey("ApplicantId");
+
+                    b.HasOne("Models.ModelsIdentity.IdentityAuth.Employer", "Employer")
+                        .WithMany("Comments")
+                        .HasForeignKey("EmployerId");
+
+                    b.Navigation("Applicant");
+
+                    b.Navigation("Employer");
+                });
+
+            modelBuilder.Entity("Models.ModelsBlogSN.Feedback", b =>
+                {
+                    b.HasOne("Models.ModelsIdentity.IdentityAuth.Applicant", "Applicant")
+                        .WithMany("Feedbacks")
+                        .HasForeignKey("ApplicantId");
 
                     b.HasOne("BlogSN.Models.Post", "Post")
-                        .WithMany("Comments")
+                        .WithMany("Feedbacks")
                         .HasForeignKey("PostId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("ApplicationUser");
+                    b.Navigation("Applicant");
 
                     b.Navigation("Post");
                 });
 
             modelBuilder.Entity("Models.ModelsBlogSN.Rating", b =>
                 {
-                    b.HasOne("BlogSN.Models.Post", null)
+                    b.HasOne("Models.ModelsIdentity.IdentityAuth.Applicant", "Applicant")
+                        .WithMany("Ratings")
+                        .HasForeignKey("ApplicantId");
+
+                    b.HasOne("Models.ModelsIdentity.IdentityAuth.Employer", "Employer")
                         .WithMany("Rating")
-                        .HasForeignKey("PostId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("EmployerId");
+
+                    b.Navigation("Applicant");
+
+                    b.Navigation("Employer");
+                });
+
+            modelBuilder.Entity("Models.ModelsIdentity.IdentityAuth.ApplicationUser", b =>
+                {
+                    b.HasOne("Models.ModelsIdentity.IdentityAuth.Applicant", "Applicant")
+                        .WithOne("User")
+                        .HasForeignKey("Models.ModelsIdentity.IdentityAuth.ApplicationUser", "ApplicantId");
+
+                    b.HasOne("Models.ModelsIdentity.IdentityAuth.Employer", "Employer")
+                        .WithOne("User")
+                        .HasForeignKey("Models.ModelsIdentity.IdentityAuth.ApplicationUser", "EmployerId");
+
+                    b.Navigation("Applicant");
+
+                    b.Navigation("Employer");
+                });
+
+            modelBuilder.Entity("Models.ModelsIdentity.IdentityAuth.Resume", b =>
+                {
+                    b.HasOne("Models.ModelsIdentity.IdentityAuth.Applicant", "Applicant")
+                        .WithMany("Resumes")
+                        .HasForeignKey("ApplicantId");
+
+                    b.HasOne("Models.ModelsIdentity.IdentityAuth.Gender", "Gender")
+                        .WithMany()
+                        .HasForeignKey("GenderId");
+
+                    b.Navigation("Applicant");
+
+                    b.Navigation("Gender");
                 });
 
             modelBuilder.Entity("BlogSN.Models.Category", b =>
@@ -649,16 +801,31 @@ namespace Identity.Migrations
 
             modelBuilder.Entity("BlogSN.Models.Post", b =>
                 {
-                    b.Navigation("Comments");
-
-                    b.Navigation("Rating");
+                    b.Navigation("Feedbacks");
                 });
 
-            modelBuilder.Entity("Models.ModelsIdentity.IdentityAuth.ApplicationUser", b =>
+            modelBuilder.Entity("Models.ModelsIdentity.IdentityAuth.Applicant", b =>
+                {
+                    b.Navigation("Comments");
+
+                    b.Navigation("Feedbacks");
+
+                    b.Navigation("Ratings");
+
+                    b.Navigation("Resumes");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Models.ModelsIdentity.IdentityAuth.Employer", b =>
                 {
                     b.Navigation("Comments");
 
                     b.Navigation("Posts");
+
+                    b.Navigation("Rating");
+
+                    b.Navigation("User");
                 });
 #pragma warning restore 612, 618
         }

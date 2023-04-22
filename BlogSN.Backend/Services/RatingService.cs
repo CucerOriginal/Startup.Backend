@@ -9,30 +9,37 @@ namespace BlogSN.Backend.Services
     {
         private readonly BlogSnDbContext _context;
         private readonly IPostService _postService;
+        private readonly IUserServive _userServive;
+        private readonly IEmployerService _employerService;
 
-        public RatingService(BlogSnDbContext context, IPostService postService)
+        public RatingService(BlogSnDbContext context, IPostService postService, IUserServive userServive, IEmployerService employerService)
         {
+            _userServive = userServive;
             _context = context;
             _postService = postService;
+            _employerService = employerService;
         }
 
         public async Task CreateRatingStatus(Rating rating, CancellationToken cancellationToken)
         {
             var ratingSearch = await _context.Rating.FirstOrDefaultAsync(p => p.Id == rating.Id, cancellationToken);
-            if (ratingSearch is null)
-            {
-                await _context.Rating.AddAsync(rating, cancellationToken);
+
+			if (ratingSearch != null)
+			{
+                throw new BadRequestException($"Like status {ratingSearch.LikeStatus} is already exist");
             }
-            else throw new BadRequestException($"Like status {ratingSearch.LikeStatus} is already exist");
-           
-            var post = await _postService.GetPostById(rating.PostId, cancellationToken);
+
+            rating.Id = Guid.NewGuid().ToString();
+
+            await _context.Rating.AddAsync(rating, cancellationToken);
+
+            var employer = await _employerService.GetEmployerById(rating.EmployerId, cancellationToken);
             if (rating.LikeStatus)
             {
-                post.RatingCount++;
+                employer.RatingCount++;
             }
-            else post.RatingCount--;
+            else employer.RatingCount--;
             await _context.SaveChangesAsync();
-
         }
 
         public async Task DeleteRatingStatusById(string id, CancellationToken cancellationToken)
@@ -42,12 +49,13 @@ namespace BlogSN.Backend.Services
             {
                 throw new NotFoundException($"No rating with id = {id}");
             }
-            var post = await _postService.GetPostById(rating.PostId, cancellationToken);
+
+            var employer = await _employerService.GetEmployerById(rating.EmployerId, cancellationToken);
             if (rating.LikeStatus)
             {
-                post.RatingCount--;
+                employer.RatingCount--;
             }
-            else post.RatingCount++;
+            else employer.RatingCount++;
             _context.Remove(rating);
             await _context.SaveChangesAsync(cancellationToken);
         }
@@ -63,19 +71,21 @@ namespace BlogSN.Backend.Services
             {
                 throw new NotFoundException($"No rating with id = {id}");
             }
-            var post = await _postService.GetPostById(rating.PostId, cancellationToken);
+
+            var employer = await _employerService.GetEmployerById(rating.EmployerId, cancellationToken);
             if (lickCheck.LikeStatus == rating.LikeStatus)
             {
                 _context.Rating.Remove(rating);
                 if (rating.LikeStatus)
                 {
-                    post.RatingCount--;
+                    employer.RatingCount--;
                 }
-                else post.RatingCount++;
+                else employer.RatingCount++;
                 await _context.SaveChangesAsync(cancellationToken);
                 return;
             }
-            post.RatingCount = rating.LikeStatus ? post.RatingCount + 2 : post.RatingCount - 2;
+
+            employer.RatingCount = rating.LikeStatus ? employer.RatingCount + 2 : employer.RatingCount - 2;
             _context.Entry(rating).State = EntityState.Modified;
             await _context.SaveChangesAsync(cancellationToken);
         }

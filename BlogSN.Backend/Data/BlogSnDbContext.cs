@@ -18,6 +18,16 @@ public class BlogSnDbContext: DbContext
 
     public DbSet<ApplicationUser> AspNetUsers { get; set; }
 
+    public DbSet<Applicant> Applicant { get; set; }
+
+    public DbSet<Feedback> Feedback { get; set; }
+
+    public DbSet<Employer> Employer { get; set; }
+
+    public DbSet<Gender> Gender { get; set; }
+
+    public DbSet<Resume> Resume { get; set; }
+
     public DbSet<Post> Post { get; set; }
     
     public DbSet<Category> Category { get; set; }

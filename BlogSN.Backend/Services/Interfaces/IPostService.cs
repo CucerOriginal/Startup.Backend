@@ -1,11 +1,14 @@
 ﻿using BlogSN.Models;
 using Models.ModelsBlogSN;
+using Models.ModelsIdentity.IdentityAuth;
 
 namespace BlogSN.Backend.Services;
 
 public interface IPostService
 {
     public Task<IEnumerable<Post>> GetPosts(CancellationToken cancellationToken);
+
+    public Task<IEnumerable<Applicant>> GetApplicantsFeedbackedPostByPostId(int postId, CancellationToken cancellationToken);
 
     public Task CreatePost(Post post, CancellationToken cancellationToken);
 
@@ -14,7 +17,4 @@ public interface IPostService
     public Task DeletePostById(int id, CancellationToken cancellationToken);
 
     public Task UpdatePostById(int id, Post post, CancellationToken cancellationToken);
-
-    public Task<IEnumerable<Comment>> GetCommnetsByPost(int postId, CancellationToken cancellationToken);
-
 }

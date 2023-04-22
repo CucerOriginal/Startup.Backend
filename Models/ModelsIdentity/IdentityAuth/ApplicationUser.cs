@@ -8,16 +8,14 @@ namespace Models.ModelsIdentity.IdentityAuth
 {
     public class ApplicationUser : IdentityUser
     {
-        [JsonIgnore]
-        public IList<Post>? Posts { get; set; }
- 
-        [JsonIgnore]
-        public IList<Comment>? Comments { get; set; }
+		public virtual Applicant? Applicant { get; set; }
 
-        public string? Role { get; set; }
+		public virtual string? ApplicantId { get; set; }
 
-        public string? Requisite { get; set; }
+		public virtual Employer? Employer { get; set; }
 
-        public int PostsCount { get; set; }
-    }
+		public virtual string? EmployerId { get; set; }
+
+		public string? Role { get; set; }
+	}
 }

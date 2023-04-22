@@ -16,7 +16,7 @@ namespace BlogSN.Backend.Services
 
         public async Task<IEnumerable<Post>> GetCategoryPosts(int categoryId, CancellationToken cancellationToken)
         {
-            return await _context.Post.Where(p => p.CategoryId == categoryId).Include(p => p.Category).Include(p => p.ApplicationUser).ToListAsync(cancellationToken);
+            return await _context.Post.Where(p => p.CategoryId == categoryId).Include(p => p.Category).Include(p => p.Employer).ToListAsync(cancellationToken);
         }
 
         public async Task<IEnumerable<Category>> GetAllCategories(CancellationToken cancellationToken)
@@ -37,7 +37,7 @@ namespace BlogSN.Backend.Services
 
             if (category is null)
             {
-                throw new NotFoundException($"No post with id = {id}");
+                throw new NotFoundException($"No category with id = {id}");
             }
             return category;
         }

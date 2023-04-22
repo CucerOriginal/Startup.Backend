@@ -7,7 +7,6 @@ namespace BlogSN.Models;
 
 public class Post
 {
-
     public Post()
     {
         DateCreated = DateTime.UtcNow;
@@ -22,28 +21,20 @@ public class Post
 
     public string? Content { get; set; }
 
-    public float NecessarySum { get; set; }
-
-    public float CollectedSum { get; set; }
+    public double Salary { get; set; }
 
     public DateTime DateCreated { get; set; }
 
+    public string? EmployerId { get; set; }
+    
     [JsonIgnore]
-    public IList<Rating>? Rating { get; set; }
-
-    public int RatingCount { get; set; }
+    public Employer? Employer { get; set; }
 
     [JsonIgnore]
-    public IList<Comment>? Comments { get; set; }
-
-    public int CommentsCount { get; set; }
+    public IList<Feedback>? Feedbacks { get; set; }
 
     public int? CategoryId { get; set; }
 
     [JsonIgnore]
     public Category? Category { get; set; }
-    
-    public string? ApplicationUserId { get; set; }
-    [JsonIgnore]
-    public ApplicationUser? ApplicationUser { get; set; }
 }
