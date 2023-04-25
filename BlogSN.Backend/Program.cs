@@ -10,6 +10,7 @@ using Models.ModelsIdentity.IdentityAuth;
 using Newtonsoft.Json;
 using System.Text;
 using BlogSN.Backend.Middleware;
+using BlogSN.Backend.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -122,6 +123,10 @@ builder.Services.AddTransient<ICommentService, CommentService>();
 builder.Services.AddTransient<IRatingService, RatingService>();
 
 builder.Services.AddTransient<IUserServive, UserServive>();
+
+builder.Services.AddTransient<IFeedbackService, FeedbackService>();
+
+builder.Services.AddTransient<IResumeService, ResumeService>();
 
 builder.Services.AddScoped<UserManager<ApplicationUser>>();
 builder.Services.AddScoped<RoleManager<IdentityRole>>();

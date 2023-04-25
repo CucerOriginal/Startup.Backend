@@ -18,7 +18,7 @@ namespace BlogSN.Backend.Controllers
         }
 
         [HttpPost]
-        [Authorize]
+        //[Authorize]
         public async Task<ActionResult<Rating>> CreateRatting(Rating rating, CancellationToken cancellationToken)
         {
             rating.Id = rating.PostId + rating.ApplicationUserId;
@@ -27,7 +27,7 @@ namespace BlogSN.Backend.Controllers
         }
 
         [HttpDelete("{id}")]
-        [Authorize]
+        //[Authorize]
         public async Task<IActionResult> DeleteRatting(string id, CancellationToken cancellationToken)
         {
             await _service.DeleteRatingStatusById(id, cancellationToken);
@@ -35,7 +35,7 @@ namespace BlogSN.Backend.Controllers
         }
 
         [HttpPut("{id}")]
-        [Authorize]
+        //[Authorize]
         public async Task<IActionResult> PutRatting(string id, [FromBody] Rating rating, CancellationToken cancellationToken)
         {
             await _service.UpdateRatingStatusById(id, rating, cancellationToken);

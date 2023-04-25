@@ -51,7 +51,7 @@ public class PostService : IPostService
     public async Task<Post> GetPostById(int id, CancellationToken cancellationToken)
     {
 
-        var post = await _context.Post.Include(p => p.ApplicationUser).Include(p=> p.Category).FirstOrDefaultAsync(t => t.Id == id, cancellationToken);
+        var post = await _context.Post.Include(p => p.ApplicationUser).Include(p=> p.Category).Include(p=> p.Feedbacks).FirstOrDefaultAsync(t => t.Id == id, cancellationToken);
 
         if (post is null)
         {

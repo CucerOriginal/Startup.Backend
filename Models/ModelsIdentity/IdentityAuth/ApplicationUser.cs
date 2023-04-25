@@ -14,6 +14,12 @@ namespace Models.ModelsIdentity.IdentityAuth
         [JsonIgnore]
         public IList<Comment>? Comments { get; set; }
 
+        [JsonIgnore]
+        public IList<Feedback>? Feedbacks { get; set; }
+
+        [JsonIgnore]
+        public IList<Resume>? Resumes { get; set; }
+
         public string? Role { get; set; }
 
         public string? Requisite { get; set; }

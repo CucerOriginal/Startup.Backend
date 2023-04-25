@@ -21,7 +21,13 @@ public class BlogSnDbContext: DbContext
     public DbSet<Post> Post { get; set; }
     
     public DbSet<Category> Category { get; set; }
-    
+
+    public DbSet<Gender> Gender { get; set; }
+
+    public DbSet<Resume> Resume { get; set; }
+
+    public DbSet<Feedback> Feedback { get; set; }
+
     public async Task<bool> IsPostExists(int id) =>
         await Post.AnyAsync(post => post.Id == id);
     

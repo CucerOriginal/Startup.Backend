@@ -47,7 +47,7 @@ namespace BlogSN.Backend.Controllers
         }
 
         [HttpDelete("{userId}")]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteUserByUserId(string userId, CancellationToken cancellationToken)
         {
             await _service.DeleteUserById(userId, cancellationToken);
@@ -56,14 +56,14 @@ namespace BlogSN.Backend.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task<ActionResult<IEnumerable<ApplicationUser>>> GetUsers(CancellationToken cancellationToken)
         {
             return Ok(await _service.GetUsers(cancellationToken));
         }
 
         [HttpPut("{userId}/changeName")]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> PutUsernameByUserId(string userId, string newName, CancellationToken cancellationToken)
         {
             await _service.UpdateUsernameById(userId, newName, cancellationToken);
@@ -72,7 +72,7 @@ namespace BlogSN.Backend.Controllers
         }
 
         [HttpPut("{userId}/changeEmail")]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> PutUserEmailByUserId(string userId, string newEmail, CancellationToken cancellationToken)
         {
             await _service.UpdateUserEmailById(userId, newEmail, cancellationToken);
@@ -81,7 +81,7 @@ namespace BlogSN.Backend.Controllers
         }
 
         [HttpPut("{userId}/changeRoleToAdmin")]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> UpdateUserRoleToAdminById(string userId, CancellationToken cancellationToken)
         {
             await _service.UpdateUserRoleToAdminById(userId, cancellationToken);
@@ -90,7 +90,7 @@ namespace BlogSN.Backend.Controllers
         }
 
         [HttpPut("{userId}/changeRoleToUser")]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> UpdateUserRoleToUserById(string userId, CancellationToken cancellationToken)
         {
             await _service.UpdateUserRoleToUserById(userId, cancellationToken);

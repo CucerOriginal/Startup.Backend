@@ -16,15 +16,15 @@ public class Post
     [Key]
     public int Id { get; set; }
 
+    public string? CompanyName { get; set; }
+
     public string? Title { get; set; }
 
     public string? Description { get; set; }
 
     public string? Content { get; set; }
 
-    public float NecessarySum { get; set; }
-
-    public float CollectedSum { get; set; }
+    public float Salary { get; set; }
 
     public DateTime DateCreated { get; set; }
 
@@ -35,6 +35,9 @@ public class Post
 
     [JsonIgnore]
     public IList<Comment>? Comments { get; set; }
+
+    [JsonIgnore]
+    public IList<Feedback>? Feedbacks { get; set; }
 
     public int CommentsCount { get; set; }
 

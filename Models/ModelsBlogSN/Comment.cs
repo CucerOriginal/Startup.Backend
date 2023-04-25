@@ -21,11 +21,15 @@ namespace Models.ModelsBlogSN
         public string? Content { get; set; }
 
         public int PostId { get; set; }
+
         [JsonIgnore]
         public Post? Post { get; set; }
+
         public string? ApplicationUserId { get; set; }
+
         [JsonIgnore]
         public ApplicationUser? ApplicationUser { get; set; }
+
         public DateTime CreatedDate { get; set; }
     }
 }
