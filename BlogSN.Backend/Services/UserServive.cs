@@ -162,5 +162,16 @@ namespace BlogSN.Backend.Services
 
             await _context.SaveChangesAsync(cancellationToken);
         }
-    }
+
+		public async Task<IEnumerable<Resume>> GetResumesByUserId(string id, CancellationToken cancellationToken)
+		{
+            var userResumes = await _context.Resume.Where(x => x.ApplicationUserId == id).ToListAsync(cancellationToken);
+            
+            if (!userResumes.Any())
+            {
+                throw new NotFoundException($"User has no resumes");
+            }
+            return userResumes;
+        }
+	}
 }

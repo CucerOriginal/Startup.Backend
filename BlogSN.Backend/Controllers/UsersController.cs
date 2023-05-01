@@ -34,6 +34,12 @@ namespace BlogSN.Backend.Controllers
             return Ok(await _service.GetPostsByUserId(userId, cancellationToken));
         }
 
+        [HttpGet("{userId}/resumes")]
+        public async Task<ActionResult<IEnumerable<Resume>>> GetResumesByUserId(string userId, CancellationToken cancellationToken)
+        {
+            return Ok(await _service.GetResumesByUserId(userId, cancellationToken));
+        }
+
         [HttpGet("{userId}/comments")]
         public async Task<ActionResult<IEnumerable<Post>>> GetCommentsByUserId(string userId, CancellationToken cancellationToken)
         {
