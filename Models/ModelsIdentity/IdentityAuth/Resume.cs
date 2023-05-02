@@ -42,6 +42,7 @@ namespace Models.ModelsIdentity.IdentityAuth
 
 		public string? Description { get; set; }
 
+		[JsonIgnore]
 		public Category Category { get; set; }
 
 		public int? CategoryId { get; set; }
