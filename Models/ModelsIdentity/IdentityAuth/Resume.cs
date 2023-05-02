@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BlogSN.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -12,6 +13,11 @@ namespace Models.ModelsIdentity.IdentityAuth
 	{
 		[Key]
 		public string Id { get; set; }
+
+		/// <summary>
+		/// Желаемая должность.
+		/// </summary>
+		public string Title { get; set; }
 
 		public string Surname { get; set; }
 
@@ -35,6 +41,10 @@ namespace Models.ModelsIdentity.IdentityAuth
 		public string? Education { get; set; }
 
 		public string? Description { get; set; }
+
+		public Category Category { get; set; }
+
+		public int? CategoryId { get; set; }
 		
 		[JsonIgnore]
 		public ApplicationUser? ApplicationUser { get; set; }
