@@ -11,6 +11,11 @@ namespace Models.ModelsIdentity.IdentityAuth
 {
 	public class Resume
 	{
+		public Resume()
+		{
+			DateCreated = DateTime.UtcNow;
+		}
+
 		[Key]
 		public string Id { get; set; }
 
@@ -46,7 +51,9 @@ namespace Models.ModelsIdentity.IdentityAuth
 		public Category? Category { get; set; }
 
 		public int? CategoryId { get; set; }
-		
+
+		public DateTime DateCreated { get; set; }
+
 		[JsonIgnore]
 		public ApplicationUser? ApplicationUser { get; set; }
 
