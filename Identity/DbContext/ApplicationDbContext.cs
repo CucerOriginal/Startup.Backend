@@ -41,6 +41,7 @@ namespace Identity.DbContext
 				new Resume
 				{
 					Id = "88aec81d-b5b0-45f3-1721-8d41560b02f1",
+					Title = "Специалист по ИТ",
 					Surname = "Дементьев",
 					Name = "Ваня",
 					Middlename = "Петрович",
@@ -51,11 +52,13 @@ namespace Identity.DbContext
 					Salary = 45000,
 					Education = "Университет управления 'ТИСБИ', Казань, ИТ, Программная инженерия",
 					Description = "С 2020 года самостоятельно изучаю C#",
-					ApplicationUserId = "88aec81d-b5b0-45f3-8721-8d41560b0222"
+					ApplicationUserId = "88aec81d-b5b0-45f3-8721-8d41560b0222",
+					CategoryId = 1
 				},
 				new Resume
 				{
 					Id = "88aec81d-b5b0-45f3-1721-8d41560b02f2",
+					Title = "Специалист по ИТ",
 					Surname = "Иванов",
 					Name = "Иван",
 					Middlename = "Сергеевич",
@@ -66,11 +69,13 @@ namespace Identity.DbContext
 					Salary = 55000,
 					Education = "Московский государственный технический университет им. Баумана, Москва, Информатика и вычислительная техника",
 					Description = "Опыт работы с Java, C++ и Python",
-					ApplicationUserId = "88aec81d-b5b0-45f3-8721-8d41560b0222"
+					ApplicationUserId = "88aec81d-b5b0-45f3-8721-8d41560b0222",
+					CategoryId = 1
 				},
 				new Resume
 				{
 					Id = "88aec81d-b5b0-45f3-1721-8d41560b02f3",
+					Title = "Специалист по ИТ",
 					Surname = "Петрова",
 					Name = "Анна",
 					Middlename = "Ивановна",
@@ -81,11 +86,13 @@ namespace Identity.DbContext
 					Salary = 65000,
 					Education = "Университет ИТМО, Санкт-Петербург, Информационные системы и технологии",
 					Description = "Опыт работы в веб-разработке с HTML, CSS, JavaScript",
-					ApplicationUserId = "88aec81d-b5b0-45f3-8721-8d41560b0333"
+					ApplicationUserId = "88aec81d-b5b0-45f3-8721-8d41560b0333",
+					CategoryId = 1
 				},
 				new Resume
 				{
 					Id = "88aec81d-b5b0-45f3-1721-8d41560b02f4",
+					Title = "Специалист по ИТ",
 					Surname = "Сидоров",
 					Name = "Сергей",
 					Middlename = "Петрович",
@@ -96,11 +103,13 @@ namespace Identity.DbContext
 					Salary = 50000,
 					Education = "Московский государственный университет им. М.В. Ломоносова, Москва, Факультет прикладной математики и информатики",
 					Description = "Опыт работы с Python и MATLAB",
-					ApplicationUserId = "88aec81d-b5b0-45f3-8721-8d41560b0111"
+					ApplicationUserId = "88aec81d-b5b0-45f3-8721-8d41560b0111",
+					CategoryId = 1
 				},
 				new Resume
 				{
 					Id = "88aec81d-b5b0-45f3-1721-8d41560b02f5",
+					Title = "Специалист по фронту",
 					Surname = "Кузнецова",
 					Name = "Мария",
 					Middlename = "Сергеевна",
@@ -111,7 +120,8 @@ namespace Identity.DbContext
 					Salary = 60000,
 					Education = "Университет ИТМО, Санкт-Петербург, Информатика и вычислительная техника",
 					Description = "Опыт работы в разработке мобильных приложений на Java и Kotlin",
-					ApplicationUserId = "88aec81d-b5b0-45f3-8721-8d41560b0222"
+					ApplicationUserId = "88aec81d-b5b0-45f3-8721-8d41560b0222",
+					CategoryId = 6
 				}
 			);
 
