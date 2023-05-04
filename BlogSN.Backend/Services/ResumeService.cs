@@ -38,7 +38,7 @@ namespace BlogSN.Backend.Services
 			{
 				throw new BadRequestException("id from the route is not equal to id from passed object");
 			}
-
+			
 			_context.Entry(resume).State = EntityState.Modified;
 			await _context.SaveChangesAsync(cancellationToken);
 		}
