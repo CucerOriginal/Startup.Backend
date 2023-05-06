@@ -24,5 +24,10 @@ namespace Models.ModelsBlogSN
 
 		[JsonIgnore]
 		public ApplicationUser? ApplicationUser { get; set; }
+
+		public string? ResumeId { get; set; }
+
+		[JsonIgnore]
+		public Resume Resume { get; set; }
 	}
 }

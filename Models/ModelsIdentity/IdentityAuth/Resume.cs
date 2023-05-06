@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace Models.ModelsIdentity.IdentityAuth
 {
+	//Добавить город проживания и дату рождения и график.
 	public class Resume
 	{
 		public Resume()
@@ -52,7 +53,7 @@ namespace Models.ModelsIdentity.IdentityAuth
 
 		public int? CategoryId { get; set; }
 
-		public DateTime DateCreated { get; set; }
+		public DateTime? DateCreated { get; set; }
 
 		[JsonIgnore]
 		public ApplicationUser? ApplicationUser { get; set; }
