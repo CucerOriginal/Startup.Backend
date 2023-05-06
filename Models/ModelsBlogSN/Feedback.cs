@@ -28,6 +28,6 @@ namespace Models.ModelsBlogSN
 		public string? ResumeId { get; set; }
 
 		[JsonIgnore]
-		public Resume Resume { get; set; }
+		public Resume? Resume { get; set; }
 	}
 }
