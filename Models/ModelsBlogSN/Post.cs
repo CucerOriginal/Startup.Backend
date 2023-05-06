@@ -26,12 +26,12 @@ public class Post
 
     public float Salary { get; set; }
 
-    public DateTime DateCreated { get; set; }
+    public DateTime? DateCreated { get; set; }
 
     [JsonIgnore]
     public IList<Rating>? Rating { get; set; }
 
-    public int RatingCount { get; set; }
+    public int? RatingCount { get; set; }
 
     [JsonIgnore]
     public IList<Comment>? Comments { get; set; }
@@ -39,7 +39,7 @@ public class Post
     [JsonIgnore]
     public IList<Feedback>? Feedbacks { get; set; }
 
-    public int CommentsCount { get; set; }
+    public int? CommentsCount { get; set; }
 
     public int? CategoryId { get; set; }
 
