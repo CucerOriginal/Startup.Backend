@@ -2,6 +2,7 @@
 using BlogSN.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Models.ModelsBlogSN;
 using Models.ModelsIdentity.IdentityAuth;
 
 namespace BlogSN.Backend.Controllers
@@ -38,6 +39,12 @@ namespace BlogSN.Backend.Controllers
         public async Task<ActionResult<IEnumerable<Resume>>> GetResumesByUserId(string userId, CancellationToken cancellationToken)
         {
             return Ok(await _service.GetResumesByUserId(userId, cancellationToken));
+        }
+
+        [HttpGet("{userId}/feedbacks")]
+        public async Task<ActionResult<IEnumerable<Feedback>>> GetFeedbacksByUserId(string userId, CancellationToken cancellationToken)
+        {
+            return Ok(await _service.GetFeedbacksByUserId(userId, cancellationToken));
         }
 
         [HttpGet("{userId}/comments")]

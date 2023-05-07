@@ -119,10 +119,15 @@ namespace BlogSN.Backend.Controllers
         }
         
         [HttpGet("{postId}/comments")]
-        public async Task<ActionResult<IEnumerable<Post>>> GetCategoryPosts(int postId, CancellationToken cancellationToken)
+        public async Task<ActionResult<IEnumerable<Post>>> GetCommentsPost(int postId, CancellationToken cancellationToken)
         {
             return Ok(await _service.GetCommnetsByPost(postId, cancellationToken));
         }
 
+        [HttpGet("{postId}/feedbacks")]
+        public async Task<ActionResult<IEnumerable<Post>>> GetFeedbacksPost(int postId, CancellationToken cancellationToken)
+        {
+            return Ok(await _service.GetFeedbacksByPost(postId, cancellationToken));
+        }
     }
 }

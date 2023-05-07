@@ -10,6 +10,8 @@ namespace BlogSN.Backend.Services
 
         public Task<IEnumerable<Post>> GetPostsByUserId(string id, CancellationToken cancellationToken);
 
+        public Task<IEnumerable<Feedback>> GetFeedbacksByUserId(string id, CancellationToken cancellationToken);
+
         public Task<IEnumerable<Resume>> GetResumesByUserId(string id, CancellationToken cancellationToken);
 
         public Task<IEnumerable<ApplicationUser>> GetUsers(CancellationToken cancellationToken);

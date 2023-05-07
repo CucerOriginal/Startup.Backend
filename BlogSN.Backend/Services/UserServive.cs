@@ -63,6 +63,16 @@ namespace BlogSN.Backend.Services
             return userComments;
         }
 
+        public async Task<IEnumerable<Feedback>> GetFeedbacksByUserId(string userId, CancellationToken cancellationToken)
+        {
+            var userFeedbacks = await _context.Feedback.Where(x => x.ApplicationUserId == userId).ToListAsync(cancellationToken);
+            if (!userFeedbacks.Any())
+            {
+                throw new NotFoundException($"User has no feedbacks");
+            }
+            return userFeedbacks;
+        }
+
         public async Task<IEnumerable<Rating>> GetRatingsByUserId(string userId, CancellationToken cancellationToken)
         {
             var userRattings = await _context.Rating.Where(x => x.ApplicationUserId == userId).ToListAsync(cancellationToken);

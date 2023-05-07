@@ -17,4 +17,6 @@ public interface IPostService
 
     public Task<IEnumerable<Comment>> GetCommnetsByPost(int postId, CancellationToken cancellationToken);
 
+    public Task<IEnumerable<Feedback>> GetFeedbacksByPost(int postId, CancellationToken cancellationToken);
+
 }

@@ -91,4 +91,8 @@ public class PostService : IPostService
         return await _context.Comment.Where(c => c.PostId == postId).Include(c => c.ApplicationUser).ToListAsync(cancellationToken);
     }
 
+    public async Task<IEnumerable<Feedback>> GetFeedbacksByPost(int postId, CancellationToken cancellationToken)
+    {
+        return await _context.Feedback.Where(c => c.PostId == postId).Include(c => c.ApplicationUser).ToListAsync(cancellationToken);
+    }
 }
