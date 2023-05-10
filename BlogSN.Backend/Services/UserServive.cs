@@ -65,7 +65,7 @@ namespace BlogSN.Backend.Services
 
         public async Task<IEnumerable<Feedback>> GetFeedbacksByUserId(string userId, CancellationToken cancellationToken)
         {
-            var userFeedbacks = await _context.Feedback.Where(x => x.ApplicationUserId == userId).ToListAsync(cancellationToken);
+            var userFeedbacks = await _context.Feedback.Where(x => x.ApplicationUserId == userId).Include(p=> p.Post).ToListAsync(cancellationToken);
             if (!userFeedbacks.Any())
             {
                 throw new NotFoundException($"User has no feedbacks");
