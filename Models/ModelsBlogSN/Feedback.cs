@@ -22,9 +22,15 @@ namespace Models.ModelsBlogSN
 
 		public string? ApplicationUserId { get; set; }
 
-		public bool FeedbackAnswer { get; set; }
+		/// <summary>
+		/// Ответ hr-а.
+		/// </summary>
+		public bool Answer { get; set; }
 
-		public bool FeedbackAtWork { get; set; }
+		/// <summary>
+		/// В работе.
+		/// </summary>
+		public bool AtWork { get; set; }
 
 		[JsonIgnore]
 		public ApplicationUser? ApplicationUser { get; set; }

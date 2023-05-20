@@ -16,15 +16,18 @@ namespace BlogSN.Backend.Controllers
             _service = service;
         }
 
+        //Создать отклик
         [HttpPost]
         //[Authorize]
         public async Task<ActionResult<Feedback>> PostFeedback(Feedback feedback, CancellationToken cancellationToken)
         {
             feedback.Id = feedback.PostId + feedback.ApplicationUserId;
+            feedback.FeedbackAtWork = true;
             await _service.CreateFeedback(feedback, cancellationToken);
             return Ok();
         }
 
+        //Удалить отлик
         [HttpDelete("{id}")]
         //[Authorize]
         public async Task<IActionResult> DeleteFeedback(string id, CancellationToken cancellationToken)
