@@ -40,5 +40,22 @@ namespace BlogSN.Backend.Services
 			_context.Remove(feedback);
 			await _context.SaveChangesAsync();
 		}
+
+		public async Task UpdateFeedbackById(string feedbackId, Feedback feedback, CancellationToken cancellationToken)
+		{
+			if (feedback == null)
+			{
+				throw new BadRequestException("resume is null");
+			}
+
+			if (feedbackId != feedback.Id)
+			{
+				throw new BadRequestException("id from the route is not equal to id from passed object");
+			}
+
+			feedback.AtWork = false;
+			_context.Entry(feedback).State = EntityState.Modified;
+			await _context.SaveChangesAsync(cancellationToken);
+		}
 	}
 }

@@ -22,9 +22,21 @@ namespace BlogSN.Backend.Controllers
         public async Task<ActionResult<Feedback>> PostFeedback(Feedback feedback, CancellationToken cancellationToken)
         {
             feedback.Id = feedback.PostId + feedback.ApplicationUserId;
-            feedback.FeedbackAtWork = true;
+            feedback.AtWork = true;
             await _service.CreateFeedback(feedback, cancellationToken);
             return Ok();
+        }
+
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [HttpPut("{id}")]
+        //[Authorize]
+        public async Task<IActionResult> PutFeedback(string id, [FromBody] Feedback feedback, CancellationToken cancellationToken)
+        {
+            await _service.UpdateFeedbackById(id, feedback, cancellationToken);
+
+            return NoContent();
         }
 
         //Удалить отлик

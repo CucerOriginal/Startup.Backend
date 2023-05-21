@@ -6,5 +6,6 @@ namespace BlogSN.Backend.Services.Interfaces
 	{
 		public Task CreateFeedback(Feedback feedback, CancellationToken cancellationToken);
 		public Task DeleteFeedbackById(string feedbackId, CancellationToken cancellationToken);
+		public Task UpdateFeedbackById(string feedbackId, Feedback feedback, CancellationToken cancellationToken);
 	}
 }
